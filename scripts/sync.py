@@ -17,6 +17,8 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import urllib.error
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -50,9 +52,33 @@ def collect(src: Path, dst: Path):
             shutil.copytree(src / d, dst / d, ignore=ignore)
 
 
+def is_public(repo: str) -> bool:
+    """dx-docs is public, so only public repos may be copied.
+
+    Asks the GitHub API without credentials: a private repo answers 404.
+    Any other unexpected answer stops the run rather than guessing.
+    """
+    req = urllib.request.Request(f"https://api.github.com/repos/{ORG}/{repo}",
+                                 headers={"Accept": "application/vnd.github+json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return not json.load(resp).get("private", True)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return False
+        raise
+
+
 def sync_repo(group: str, repo: str, check: bool) -> bool:
     url = f"https://github.com/{ORG}/{repo}.git"
     dst = ROOT / group / repo
+    if not is_public(repo):
+        if dst.exists():
+            shutil.rmtree(dst)
+            print(f"  {group}/{repo}: NOT PUBLIC - existing copy removed")
+        else:
+            print(f"  {group}/{repo}: NOT PUBLIC - skipped")
+        return False
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp) / repo
         run("git", "clone", "--quiet", "--depth", "1", url, str(work))
