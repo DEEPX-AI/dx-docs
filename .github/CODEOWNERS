@@ -1,0 +1,7 @@
+# Collected copies: changed only by the sync workflow.
+# Replace the team below with the real reviewers before enabling branch protection.
+/modules/        @DEEPX-AI/dx-docs-maintainers
+/common/         @DEEPX-AI/dx-docs-maintainers
+/sources.yml     @DEEPX-AI/dx-docs-maintainers
+/scripts/        @DEEPX-AI/dx-docs-maintainers
+/.github/        @DEEPX-AI/dx-docs-maintainers

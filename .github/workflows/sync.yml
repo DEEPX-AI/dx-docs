@@ -1,0 +1,48 @@
+name: sync
+
+# Pull README / RELEASE_NOTES / docs from the source repos listed in sources.yml.
+on:
+  schedule:
+    - cron: "0 16 * * *"   # daily 01:00 KST
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "Sync only this repo (empty = all enabled)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml==6.0.2
+      - name: Sync
+        env:
+          REPO: ${{ github.event.inputs.repo }}
+        run: |
+          if [ -n "$REPO" ] && ! printf '%s' "$REPO" | grep -Eq '^[A-Za-z0-9._-]+$'; then
+            echo "::error::Invalid repo name"; exit 1
+          fi
+          python scripts/sync.py $REPO
+      - name: Commit changes
+        run: |
+          if [ -z "$(git status --porcelain modules common)" ]; then
+            echo "No changes."; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add modules common
+          changed=$(git diff --cached --name-only | cut -d/ -f1-2 | sort -u | tr "\n" " ")
+          git commit -m "sync: ${changed}"
+          git push

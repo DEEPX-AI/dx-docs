@@ -1,0 +1,42 @@
+# Repositories whose documentation is collected into this repo.
+#
+# Rule: dx-docs never holds originals. Fix docs in the source repo.
+#   modules/  <- repos whose source of truth is the internal GHES (mirrored to DEEPX-AI)
+#   common/   <- repos that exist only on public GitHub
+#
+# Each repo contributes: README*.md, RELEASE_NOTES*.md and the docs/ folder.
+# Set enabled: true to start collecting a repo.
+
+org: DEEPX-AI
+
+copy:
+  files: ["README*.md", "RELEASE_NOTES*.md"]
+  dirs: ["docs"]
+  exclude: [".deepx", ".claude", ".codex", ".cursor", ".opencode", ".github", "node_modules"]
+
+modules:
+  # pilot (D2)
+  - { repo: dx_rt,                  enabled: true }
+  - { repo: dx-modelzoo,            enabled: true }
+  - { repo: dx_stream,              enabled: true }
+  # enable after B1 confirmation
+  - { repo: dx-all-suite,           enabled: false }
+  - { repo: dx_app,                 enabled: false }
+  - { repo: dx-compiler,            enabled: false }
+  - { repo: dx-runtime,             enabled: false }
+  - { repo: dx_rt_npu_linux_driver, enabled: false }
+  - { repo: dx_fw,                  enabled: false }
+  - { repo: dx_clip_demo,           enabled: false }
+  - { repo: dx_demo,                enabled: false }
+  - { repo: deepx_yolo,             enabled: false }
+  - { repo: dx_yolo26,              enabled: false }
+
+common:
+  # owned by BSP-215 (Francesco)
+  - { repo: dx-tutorials,                     enabled: false }
+  - { repo: dx-m1-rpi5-quick-start-guide,     enabled: false }
+  - { repo: dx-m1-rpi5-devkit-aws-greengrass, enabled: false }
+  - { repo: dx-clip-starter,                  enabled: false }
+  - { repo: PP-OCR_Online_demo-deepx,         enabled: false }
+  - { repo: meta-deepx-m1,                    enabled: false }
+  - { repo: dx-k8s-device-plugin,             enabled: false }
