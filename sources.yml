@@ -28,7 +28,7 @@ modules:
   - { repo: dx_fw,                  enabled: true }
   - { repo: dx_clip_demo,           enabled: true }
   - { repo: dx_demo,                enabled: true }
-  - { repo: deepx_yolo,             enabled: true }
+  - { repo: deepx_yolo,             enabled: false }  # PRIVATE repo: do not copy into public dx-docs
   - { repo: dx_yolo26,              enabled: true }
 
 common:
