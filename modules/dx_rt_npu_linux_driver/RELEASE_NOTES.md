@@ -1,0 +1,268 @@
+# RELEASE_NOTES
+## v2.7.0 / 2026-09-22
+
+### 1. Changed
+
+### 2. Fixed
+- fix user buffer unmap spike time
+
+### 3. Added
+- Change EP PCIe device task period when driver probe
+
+## v2.6.0 / 2026-08-03
+
+### 1. Changed
+- Enhance MSI Handling for virtualization support in eDMA driver.
+
+### 2. Fixed
+- support kernel version 4.4.0
+- don't let forked child's close() cancel parent's ioctl wait
+
+### 3. Added
+
+## v2.5.1 / 2026-07-03
+
+### 1. Changed
+
+### 2. Fixed
+- Reject in-flight mailbox cmds during FW reboot, harden recovery sleep
+
+### 3. Added
+
+## v2.5.0 / 2026-06-23
+### 1. Changed
+- Improved device connection and reconnection handling to enhance resilience during temporary connectivity instability.
+- Optimized data flow for large-scale data transfers to improve operational consistency under high-load environments.
+
+### 2. Fixed
+- Fixed an issue where the device failed to return to a normal state after a firmware update.
+- Resolved module installation and loading errors that occurred in certain hardware environments.
+
+### 3. Added
+- Added automatic recovery logic for critical runtime error scenarios.
+- Expanded device identification support to recognize a wider range of hardware variants.
+- Added a background preparation path to reduce latency during large-volume transfers.
+
+## v2.4.1 / 2026-04-13
+
+### 1. Changed
+- harden DKMS package for external distribution
+
+### 2. Fixed
+
+### 3. Added
+
+## v2.4.0 / 2026-03-20
+
+### 1. Changed
+- Modularize build system and enhance driver management
+
+### 2. Fixed
+- fix DMA cache coherency bugs on ARM64 IOMMU
+- defer dw_edma_free_desc() to process context to fix IOMMU vunmap crash
+
+### 3. Added
+- implement DMA abnormal recovery for two termination cases
+
+## v2.3.0 / 2026-02-20
+
+### 1. Changed
+
+### 2. Fixed
+- Fix 64-bit PCIe TLP incompatibility on Raspberry Pi 4 (BCM2711) by enforcing 32-bit-only MMIO access across both dxrt_driver and dx_dma modules
+
+### 3. Added
+- Add dx_mmio_compat.h header providing 32-bit safe MMIO accessor helpers for PCIe BAR access
+
+## v2.2.0 / 2026-02-20
+
+### 1. Changed
+- add multi-process support with graceful termination and PROC_EXIT event
+
+### 2. Fixed
+- fix race conditions in PCIe driver synchronization
+
+### 3. Added
+
+## v2.1.0 / 2026-01-05
+
+### 1. Changed
+- Add sleep/resched in dxrt_polling_ack to avoid soft lockups during slow ACKs
+
+### 2. Fixed
+
+### 3. Added
+
+## v2.0.0 / 2025-12-23
+
+### 1. Changed
+- Optimized PCIe DMA performance by reducing jobs that are dependent to CPU.
+- Should be used above DX-RT SDK v3.2.0 for stability
+- [V3] add req-id initialization
+
+### 2. Fixed
+
+### 3. Added
+
+## v1.8.0 / 2025-09-12
+
+### 1. Changed
+- Support version suffix
+- Allow to access model profiling region (npu_dma_addr - 0x100000)
+
+### 2. Fixed
+
+### 3. Added
+- Support single MSI probe
+- Support safe link-up on RaspberryPI5
+
+## v1.7.1 / 2025-07-16
+### 1. Changed
+### 2. Fixed
+- Fix device identification error
+### 3. Added
+- add uninstall script and utility functions for project cleanup
+
+## v1.7.0 / 2025-07-07
+### 1. Changed
+### 2. Fixed
+### 3. Added
+- Implement command for getting PCIe Status from device.
+
+
+## v1.6.0 / 2025-05-22
+### 1. Changed
+- dxrt_drv.c dxrt_drv_cdev.c dxrt_drv_message.c dxrt_drv_npu.c
+- dxrt_drv.h dxrt_drv_common.h dxrt_drv_npu.h
+### 2. Fixed
+- Kbuild build.sh device.mk
+### 3. Added
+- dxrt_drv_npu_v3.c npu_reg_debug_DX_V3.h npu_reg_dma_DX_V3.h npu_reg_sys_DX_V3.h
+
+## v1.5.0 / 2025-05-14
+### 1. Changed
+- None
+### 2. Fixed
+- None
+### 3. Added
+- Implements termiation api
+  If the user wants to terminate normally, the corresponding API is called and the driver is notified of termination.
+
+## v1.4.3 / 2025-05-12
+### 1. Changed
+- None
+### 2. Fixed
+- Fix dma contiguous memory allocation failure on ARM
+### 3. Added
+- None
+
+## v1.4.2 / 2024-05-07
+### 1. Changed
+- Remove unused code
+- Change the numger of dma channel(3->4)
+### 2. Fixed
+- Fix dma transaction fail with iommu
+### 3. Added
+- None
+
+## v1.4.1 / 2025-03-20
+### 1. Changed
+- None
+### 2. Fixed
+- fix bounding error when multi-processes are running with multi-bounding options
+### 3. Added
+- None
+
+## v1.4.0 / 2025-03-11
+### 1. Changed
+- None
+### 2. Fixed
+- None
+### 3. Added
+- Add Otp read / write api
+
+## v1.3.3 / 2025-02-19
+### 1. Changed
+- None
+### 2. Fixed
+- Fixed DMA Error Issue on NXP i.MX8 (Kernel: v6.6.23)
+  - Fixed an issue where incorrect offset values in the vector table caused problems in handling DMA done interrupts.
+  - Modified the logic to update the configuration space's MSI data when it does not match the cached MSI data.
+### 3. Added
+- None
+
+## v1.3.2 / 2024-12-19
+### 1. Changed
+- Implement auto recovery
+- Add ddr bandwidth info into response data
+### 2. Fixed
+- None
+### 3. Added
+- Update resume function for power management
+
+## v1.3.1 / 2024-12-19
+### 1. Changed
+- None
+### 2. Fixed
+- fix unknown return type of request_acc func
+### 3. Added
+- None
+
+## v1.3.0 / 2024-12-10
+### 1. Changed
+- Update device max num(64)
+### 2. Fixed
+- None
+### 3. Added
+- implement recovery concept
+
+## v1.1.0 / 2024-10-28
+### 1. Changed
+- Add driver version mechanism with DO
+- Update firmware update command(default:device reset)
+- Update lock mechanism for queue
+### 2. Fixed
+- Fix bounding bug for multi-process
+### 3. Added
+- Add npu reqeust / response command
+
+## v1.0.7 / 2024-07-23
+### 1. Changed
+- Update hybrid interrupt mode.
+- Update scheduler option(bound / priority / bandwidth)
+### 2. Fixed
+- Fix spinlock error
+- Fixed host system hang issue when accessing PCIe
+### 3. Added
+- Add interrupt handshake logic for inference
+
+## v1.0.7 / 2024-07-23
+### 1. Changed
+- Update hybrid interrupt mode.
+- Update scheduler option(bound / priority / bandwidth)
+### 2. Fixed
+- Fix spinlock error
+- Fixed host system hang issue when accessing PCIe
+### 3. Added
+- Add interrupt handshake logic for inference
+
+## v1.0.7 / 2024-07-23
+### 1. Changed
+- Update hybrid interrupt mode.
+- Update scheduler option(bound / priority / bandwidth)
+### 2. Fixed
+- Fix spinlock error
+- Fixed host system hang issue when accessing PCIe
+### 3. Added
+- Add interrupt handshake logic for inference
+
+## v1.0.0 / 2024-04-29
+### 1. Changed
+- DXNN Version2 architecture device driver
+- Update pci_deepx kernel module(2.0.0).
+  This module is only supported on Accleator devices.
+### 2. Fixed
+- None
+### 3. Added
+- Update RT kernel module(1.0.0).
+  This is an integrated module that supports Accleator and Standalone Device.

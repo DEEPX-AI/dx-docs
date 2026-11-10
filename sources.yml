@@ -23,13 +23,13 @@ modules:
   - { repo: dx-all-suite,           enabled: true }
   - { repo: dx_app,                 enabled: true }
   - { repo: dx-compiler,            enabled: true }
-  - { repo: dx-runtime,             enabled: false }
-  - { repo: dx_rt_npu_linux_driver, enabled: false }
-  - { repo: dx_fw,                  enabled: false }
-  - { repo: dx_clip_demo,           enabled: false }
-  - { repo: dx_demo,                enabled: false }
-  - { repo: deepx_yolo,             enabled: false }
-  - { repo: dx_yolo26,              enabled: false }
+  - { repo: dx-runtime,             enabled: true }
+  - { repo: dx_rt_npu_linux_driver, enabled: true }
+  - { repo: dx_fw,                  enabled: true }
+  - { repo: dx_clip_demo,           enabled: true }
+  - { repo: dx_demo,                enabled: true }
+  - { repo: deepx_yolo,             enabled: true }
+  - { repo: dx_yolo26,              enabled: true }
 
 common:
   # owned by BSP-215 (Francesco)
