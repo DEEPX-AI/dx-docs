@@ -33,10 +33,10 @@ modules:
 
 common:
   # owned by BSP-215 (Francesco)
-  - { repo: dx-tutorials,                     enabled: false }
-  - { repo: dx-m1-rpi5-quick-start-guide,     enabled: false }
-  - { repo: dx-m1-rpi5-devkit-aws-greengrass, enabled: false }
-  - { repo: dx-clip-starter,                  enabled: false }
-  - { repo: PP-OCR_Online_demo-deepx,         enabled: false }
-  - { repo: meta-deepx-m1,                    enabled: false }
-  - { repo: dx-k8s-device-plugin,             enabled: false }
+  - { repo: dx-tutorials,                     enabled: true }
+  - { repo: dx-m1-rpi5-quick-start-guide,     enabled: true }
+  - { repo: dx-m1-rpi5-devkit-aws-greengrass, enabled: true }
+  - { repo: dx-clip-starter,                  enabled: true }
+  - { repo: PP-OCR_Online_demo-deepx,         enabled: true }
+  - { repo: meta-deepx-m1,                    enabled: true }
+  - { repo: dx-k8s-device-plugin,             enabled: true }
