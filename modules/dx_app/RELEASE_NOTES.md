@@ -1,0 +1,444 @@
+# RELEASE_NOTES
+
+## DX-APP v3.3.0 / 2026-10-23
+
+### 1. Changed
+- **Example Layout**: Reorganized C++ and Python examples into task/family/variant directories. The variant name is the .dxnn stem, and each C++ factory is namespaced `dxapp::v_<variant>`
+- **Task Renames**:
+    - `classification` → `image_classification`
+    - `embedding` → split into `face_recognition`, `image_retrieval`, `visual_place_recognition`, `zero_shot_image_classification`
+    - `attribute_recognition` → split into `person_attribute`, `face_attribute`
+    - `reid` → split into `image_classification`, `person_reid` (new task)
+    - `instance_segmentation` (FastSAM) → `zero_shot_instance_segmentation`
+    - `obb_detection` → `oriented_object_detection`
+    - `image_enhancement` → `low_light_enhancement`
+    - `face_alignment` → `face_landmark`
+- **PPU Models**: Moved PPU models under `object_detection/yolo_ppu`
+- **Executable and Script Names**: Executables, build targets, and Python scripts are now named after the variant (e.g. `yolov9s_sync` → `yolov9-s_640x640_sync`). Update any scripts that call the old names
+- **Classification Sample**: Replaced the `efficientnet-lite0_256x256` sample with `efficientnet-lite0_224x224`
+- **Model Zoo Manifest**: Migrated the model-zoo manifest to the `2_5_0` URL hierarchy (`models.ver`, `modelzoo_manifest.json`)
+- **DX-RT 3.5.0 Required**: Model Zoo 2_5_0 `.dxnn` files are container format v9, which needs DX-RT 3.5.0 or later; the C++ examples check the version at startup
+- **`add_model.sh`**: Takes a variant (the `.dxnn` stem) as its first argument; adds `--family`, `--input-size`, `--dxnn`, and `--no-register`. `config/model_registry.json` rows gain `variant`, `family`, `task` (plus `task_legacy`, `image_only`, `zoo_canonical`, `alias_of`, `published`)
+- **Model Package Pruning**: `scripts/extract_model_package.sh` now prunes `common/` to the files the extracted model actually depends on instead of copying the whole framework; use `--no-prune` for the previous full copy
+- **Ubuntu 18.04 (EOL)**: Dropped Ubuntu 18.04 support; removed it from the Makefile, CI matrix, and installation guide
+
+### 2. Fixed
+- Fixed async runners calling the shared postprocessor from several dxrt callback threads at once. DXAPP_VERIFY records follow input order
+- Fixed retrieval, re-id, and `--check` gallery paths that depended on the working directory
+- Fixed SuperPoint keypoints being drawn at the wrong vertical position in the C++ example
+- Fixed SuperPoint tracker settings (nn_thresh, max_pixel_dist, track_max_length) being ignored
+- Fixed all 998 `*_cpp_postprocess.py` Python examples running the Python postprocessor instead of `dx_postprocess`: the layout regeneration had dropped their `on_engine_init`, so they behaved exactly like the plain sync/async scripts. Each installs its C++ class again, and `run_entry()` forwards `on_engine_init` to the runner
+- Fixed `dx_postprocess` results that differed from the Python and C++ examples: `ClassificationPostProcess` applied softmax to outputs that already were a distribution and broke top-1 ties differently; `VitPosePostProcess` returned heatmap cells instead of model-input pixels (keypoints at 1/4 of their position); DAMO-YOLO and NanoDet NMS suppressed per class instead of class-agnostically; CenterPose ranked its heads and snapped keypoints differently
+- Fixed Python example postprocessors ignoring the variant's `score_threshold` (the nested config block reached them without the `conf_threshold` alias, so they ran at their 0.3 default), and `YOLOv7PPUPostprocessor` decoding with the YOLOv5 anchors (boxes ~0.82x the C++ size)
+- Fixed `dx_postprocess` rejecting numpy int64 arrays (spelled `"l"` on LP64 platforms), such as CLIP token ids
+- Fixed 3D object detection C++ runners printing errors and logs without the `[DXAPP]` prefix
+- Fixed `scripts/bench_models.sh` for the v3.3.0 layout: it read the 4-column `config/test_models.conf` as 3 columns and keyed models by family, so every row came out NO_MODEL; it now benchmarks each of the 497 variants
+
+### 3. Added
+- Multi-model graph engine and CLI `multi_model_graph_sync` / `multi_model_graph_async` (`--check`, `--list-models`, `--report`)
+- Registered 147 DX Model Zoo models, including RT-DETR, YOLOv12, YOLOv13, pre-optimized YOLO, anomaly detection, image matting, CLIP retrieval, person re-id, and visual place recognition
+- Sample galleries for re-id, image retrieval, and visual place recognition
+- `dx_postprocess` classes for the eight postprocessors that had none (50 → 58 pybind classes): `EfficientADPostProcess`, `AnomalyFeaturePostProcess` (PatchCore), `RTDETRPostProcess` (RT-DETR v1/v2/v3), `MaskRTDETRPostProcess`, `PreoptTopKPostProcess` (YOLO26 pre-optimized detection and pose), `PicoDetPostProcess` (PP-ShiTu mainbody), `PPMattingPostProcess` and `CLIPTextPostProcess`. Anomaly maps, masks and alpha mattes come back at the model's resolution and the examples resize them, since the module has no OpenCV
+
+---
+
+## DX-APP v3.2.2 / 2026-08-14
+
+### 1. Changed
+- Moved SuperPoint point tracking out of the keypoint detection post-process into the visualizer
+- Switched the depth-estimation demo from Depth-Anything-V2 to YOLO26-Depth-S.
+- Use a new low-resolution source video(lowres-drone-city-road.mp4) for the super-resolution demo
+
+### 2. Fixed
+- Fixed the Windows all-build not running in parallel by copying shared files once instead of duplicating the copy per target
+- Route C++ Async mode to the _async binary (For Windows)
+- Fixed grammar errors in installation and build documentation
+
+### 3. Added
+- YOLO26-Depth examples for all five model sizes (n / s / m / l / x, 768x768): C++ sync and async, plus Python sync, async, sync_cpp_postprocess and async_cpp_postprocess
+- Registered the 5 yolo26-depth models in `config/model_registry.json`, `scripts/modelzoo_manifest.json`
+- Use low-resolution sample video for super-resolution demos (bump sample video archive to v3.2.2)
+
+---
+
+## DX-APP v3.2.1 / 2026-08-03
+
+### 1. Changed
+- Updated all example commands in README and docs to the new model filename convention (e.g. YoloV9S.dxnn -> yolov9-s_640x640.dxnn)
+- Super-resolution now saves both a side-by-side comparison (sr_input_output.jpg) and the standalone upscaled output.
+- Replace the super-resolution sample image with genuinely low-resolution inputs (`sample_superresolution.png` removed)
+
+### 2. Fixed
+- Fixed RealESRGAN discolored output vs. C++: corrected color rounding and RGB->BGR channel order, and stopped routing 3-channel SR models through the luminance-only tiled path
+- Drain the output queue and wait for all submitted frames before stopping the display thread in the C++ async runners, fixing the lost tail of a saved video
+- Include `DXAPP_SAVE_IMAGE` in the render gate of the sync/async pose runners, fixing headless runs that wrote no image when only the env variable was set
+- Feed ESPCN the BT.601 limited-range Y
+- Remove tile seams in tiled super-resolution by cutting tiles with a halo of the model's receptive-field radius
+
+### 3. Added
+- `--sr-tile-halo` CLI option (0..4, default 4) to control tile overlap for tiled super-resolution examples
+
+---
+
+## DX-APP v3.2.0 / 2026-07-22
+
+### 1. Changed
+- Image-only examples (embedding/reid/attribute) now show an input hint and reject stream inputs instead of exposing unused `--video/--camera/--rtsp` options
+- Detection-family examples expose explicit `config.json` runtime knobs (score/nms/top_k/obj) with output-preserving defaults
+- Standardized DX-APP user-facing message level tags to `[DXAPP] [INFO]`, `[DXAPP] [WARN]`, and `[DXAPP] [ERROR]`.
+- Replaced the OBB detection sample image (DOTA8 dataset → AI-generated satellite image) to remove licensing risk
+- Added an AI-generated sample data clause to the Third-Party License document
+- Migrated the model-zoo manifest to the `2_4_0` URL hierarchy (`models.ver`, `modelzoo_manifest.json`)
+- Generalized float-input preprocessing (FLOAT dtype → normalized float32 buffer) via `runSyncInferenceTyped` / `fillModelInputBuffer`
+- Default build mode changed to minimal in build.sh : automatically runs minimal build when no option is specified, with available options printed to console
+- build.bat interactive prompt default changed to 1 minimal
+
+### 2. Fixed
+- Super-resolution now preserves input resolution by using dynamic tile padding instead of a fixed 20-tile downscale
+- `dx_postprocess` pybind build fixed by adding missing `<cmath>`/`<numeric>` includes
+- Invalid `--image` paths now print a sample-image hint and exit with code 1
+- Fixed `--save` option not producing output image files in C++ sync runners for face, obb, pose, instance segmentation tasks
+- Fixed the `inflight_current` decrement order in the async runner's `completeInflightMetrics`
+- DOPE post-process: +0.5 pixel-center offset + normalized `[0,1]` output
+- YOLOPv2 post-process: vehicle-only filtering, class-agnostic NMS, letterbox inverse-transform
+- YOLOPv2 visualizer: driving-mask type mismatch (`int` → `CV_8UC1`)
+- RetinaFace post-process: NHWC feature-map decode support (e.g. `retinaface_mobilenet_v1_736x1280`)
+- Depth Anything V2 (vits/vitb/vitl): per-model ImageNet mean/std normalization via `getInputNormalization()`
+- Windows x64 DXRT library path (`lib` → `lib/x64`) across postprocess CMakeLists + generate_build_bat.py
+- Always link `Threads::Threads` for exported C++ example package
+- Underscore-stripped fallback in E2E test model matching (e.g. `YoloV7W6` ↔ `yolov7_w6`)
+
+### 3. Added
+- DEEPX Agent-Driven Development (dx-agent-dev) — Beta.
+Generate standalone Python/C++ inference apps from plain language: an AI agent builds the IFactory-based app (preprocess → infer → postprocess → visualize) against the DEEPX model registry and runs it on the DX-M1 NPU.
+- Native C++ post-processing for the example model zoo (YOLO families, semantic seg, Face3D, embedding/classification/attribute, restoration, YOLO-PPU), replacing Python fallbacks
+- Opt-in `--fast-postprocess` path for object detection and instance segmentation
+- YOLO Customizing Guide documentation
+- Added Windows standalone Visual Studio solution package extraction workflow for DX-APP C++ examples, including automatic OpenCV/DXRT CMake dependency configuration.
+- Added `--demo-models` setup/download option to download only models used by `run_demo.sh` / `run_demo.bat`
+- Added DX-APP build selection options for minimal and category-based builds, plus Windows build selection TUI(Text User Interface).
+- Added the agent knowledge base (`.deepx/`): specialized agents, app-building/SWE skills, and generated
+  instruction files for Claude Code, GitHub Copilot, Cursor, OpenCode, and Codex CLI
+- Support for 69 net-new .dxnn models (86 added / 17 removed) and 5 new AI task categories
+  
+  - **Model registry**: 280 → 347 models across 22 AI task categories
+  - **New AI tasks (5)**: 3D Object Detection (SFA3D), Keypoint Detection (SuperPoint),
+    Object Pose Estimation (DOPE), Panoptic Driving Perception (YOLOPv2), Hand Detection (MediaPipe Hand)
+  - **Post-processors (7)** + pybind bindings (43 → 50 classes): DOPE, MediaPipe Hand, RealESRGAN, SFA3D, SuperPoint, VitPose, YOLOPv2
+  - **C++ factory interfaces (3)**: `IObjectPoseFactory`, `IKeypointDetectionFactory`, `IPanopticDrivingFactory`
+  - **Visualizers (3)**: DOPE (solvePnP 3D cuboid), SuperPoint (keypoint-only), YOLOPv2 (lane + drivable-area overlay)
+- Per-model Python examples (4 variants: sync / async / sync_cpp_postprocess / async_cpp_postprocess) and C++ examples (sync / async) for all new models
+- build.sh: Added --all flag to support full build and install in a single command
+- build.bat: Added CLI argument parsing (--minimal, --all, --category, -h/--help) for non-interactive builds
+
+---
+
+## DX-APP v3.1.1 / 2026-05-06
+
+### 1. Changed
+- None
+
+### 2. Fixed
+- Fixed typo error in document(DX-APP User Manual)
+
+### 3. Added
+- Added License information for third-party models & datasets
+
+---
+
+## DX-APP v3.1.0 / 2026-04-10
+
+### 1. Changed
+- Unified 5-layer architecture and design patterns across Python and C++ implementations
+    - **App** Entry point -> `yolov5s_sync.cpp` : `yolov5s_sync.py`
+    - **Runner** Pipeline orchestration (Sync/Async) -> `sync_detection_runner.hpp` : `sync_runner.py`
+    - **Factory** Per-model component assembly -> `yolov5s_factory.hpp` : `yolov5s_factory.py`
+    - **Component** Preprocessor / Postprocessor / Visualizer -> `processors/*.hpp` : `processors/*.py`
+    - **Interface** Abstract contracts -> `i_factory.hpp`, `i_processor.hpp` : `i_factory.py`, `i_processor.py`
+- Consolidated cross-language(Python : C++) common modules and 1:1 mapping structure
+- Modernized `run_demo.sh` with a 3-stage interactive menu supporting variable AI tasks
+- `--model`, `--image`, `--video` arguments are now optional — when omitted, task-appropriate default sample image/video is automatically selected
+- `setup_sample_models.sh` migrated to Python-based downloader — supports `--list`, `--dry-run`, `--category`, `--models` and other granular download options
+- `setup.sh` now integrates model download options — e.g. `setup.sh --models YoloV7 YoloV8S` to download specific models
+- `run_demo.sh` fully redesigned — 18 demo models, 3-stage interactive menu (Task→Mode→Input), unified C++/Python support, `--task`/`--mode`/`--input` CLI arguments for non-interactive usage
+- Display windows now show original resolution frames with auto-sized window (~1/4 screen area)
+
+### 2. Fixed
+- None
+
+### 3. Added
+- Supported new Depth Estimation task featuring FastDepth for monocular depth estimation
+- Supported new Image Restoration task featuring DnCNN, Zero-DCE, and ESPCN models
+- Migrated Full DX-Model Zoo encompassing 280 models across 17 task categories with 560 C++/Python examples (sync+async)
+- Added yolov8, v9, v10, v11, v12 PPU models and C++/Python examples
+- Implemented https://sdk.deepx.ai manifest-based DX-ModelZoo auto-download system (`scripts/download_models.py`)
+- Auto-download for models and videos — automatically invokes `setup_sample_models.sh` when model file is missing, videos via `setup_sample_videos.sh`
+- Interactive mode for `scripts/run_examples.sh` — 6-stage menu (Language→Category→Filter→ExecMode→InputType→Options) when run without arguments, with case-insensitive keyword filtering
+- `dx_tool.sh run` unified with `run_examples.sh` interactive mode
+- Real-time performance table output during example execution
+- `--show-log` option for Python examples — controls per-frame detailed log output
+
+---
+
+## DX-APP v3.0.2 / 2026-02-26
+
+### 1. Changed
+- Copy of dxrt and vcpkg DLLs into the dx-app/bin directory when building with MSVC.
+
+### 2. Fixed
+- Removed experimental filesystem includes and updated float literals in example cpp files for build error on windows
+- Refactored apply_argmax to reduce nesting and fix gcovr warnings
+
+### 3. Added
+- Added vcpkg installation script for windows build. 
+
+---
+
+## DX-APP v3.0.1 / 2026-02-09
+
+### 1. Changed
+- None
+
+### 2. Fixed
+- Hardcoded attribute size in YOLO post-processing to dynamically adjust based on model output shape
+
+### 3. Added
+- Added yolov26 cls, yolo26 pose, yolo26 seg, yolo26 obb examples
+
+---
+
+## DX-APP v3.0.0 / 2026-01-16
+
+### 1. Changed
+
+#### 1.1 Major Project Structure Refactoring
+- **Complete overhaul from existing demo applications to example system**
+  - To improve user understanding, separated the previously integrated example code by Task (classification, object detection, segmentation, face recognition, pose estimation) / Model (EfficientNet, YOLO, YOLO_PPU, SCRFD, ...) / Inference method (sync, async) / Post-processing (pure python, pybind)
+    - Complete removal of legacy C++ demo code in `demos/` directory and provision of `run_demo.sh` and `run_demo.bat` based on separated examples
+    - Transition to new `src/cpp_example/` and `src/python_example/` structure
+
+#### 1.2 Build System Improvements
+- Improved CMake configuration and enhanced shared library support
+- Updated C++17 and Visual Studio 2022(v143) configuration for Windows build
+- Adjusted DXRT include and link directories for cross-compilation
+
+#### 1.3 Complete Reconstruction of C++ / Python Example System
+- **Support for synchronous and asynchronous execution modes**
+- **Support for various input sources**: image, video, camera, RTSP stream
+- **Real-time processing mode**: Performance measurement without GUI using `--no-display` option
+- **Enhanced performance profiling**: 
+  - Latency measurement for each stage: preprocessing, inference, post-processing
+  - E2E(End-to-End) FPS calculation and performance report generation
+  - Automatic generation of timestamp-based performance report files
+
+#### 1.4 Model Support Expansion
+- **YOLOv10, YOLOv11, YOLOv12** examples added
+- **YOLOv8 Segmentation** (YOLOv8-seg) support
+- **DeepLabv3** segmentation model support
+- **PPU (Post-Processing Unit)** module integration:
+  - YOLOv5, YOLOv7 PPU version support
+  - SCRFD PPU version support
+  - Both Python and C++ examples provided
+
+#### 1.5 Documentation Improvements
+- Newly written example guides and installation guides
+- Added detailed usage examples and parameter descriptions for each model
+
+### 2. Fixed
+
+#### 2.1 Code Quality Improvements
+- Added try-catch error handling to all projects
+- Improved `std::exception` handling and throw `std::invalid_argument` when layer requirements are not met
+- Removed `using namespace std` usage and improved code clarity with explicit `std::` usage
+- Improved parameter handling and frame processing logic
+- Enhanced argument validation and error messages
+
+#### 2.2 Input Processing Improvements
+- Set `cv2.CAP_PROP_BUFFERSIZE` (buffer size 1) for camera and RTSP speed improvement
+- Fixed input_tensor passing to maintain memory reference until asynchronous inference completes
+
+### 3. Added
+
+#### 3.1 Post-processing Library (dx_postprocess)
+- **Pybind11-based Python binding**:
+  - Provides Python binding for C++ post-processing functions
+  - Automatically installs to current Python execution environment
+
+#### 3.2 Test Infrastructure Construction
+- **Pytest-based integrated test system**:
+  - Automated testing for all Python examples
+  - Achieved code coverage of 93.65% or higher
+  - E2E(End-to-End) test framework
+  - Includes all model tests for classification, object detection, segmentation, and pose estimation
+- Added `.coveragerc` file for code coverage configuration
+- Support for display mode and E2E mode testing
+
+#### 3.3 New Examples and Features
+- **Classification Models**:
+  - EfficientNet example integration
+  - ImageNet classification examples (synchronous/asynchronous)
+  
+- **Object Detection Models**:
+  - YOLO26 (Support new Ultralytics model, which is optimized for edge deployment)
+  - YOLOv5, YOLOv7, YOLOv8, YOLOv9, YOLOv10(python only), YOLOv11(python only), YOLOv12(python only)
+  - YOLOX
+  - SCRFD (face detection)
+  - YOLOv5-Face
+  - YOLOv5-Pose (pose estimation)
+
+- **Segmentation Models**:
+  - YOLOv8-seg (instance segmentation)
+  - DeepLabv3 (semantic segmentation)
+
+- **Pose Estimation**:
+  - YOLOv5-Pose examples
+  - Added skeleton drawing functionality
+
+### 4. Removed or Replaced
+
+#### 4.1 Legacy Demo Removal
+- Complete removal of `demos/classification/`
+- Complete removal of `demos/object_detection/`
+- Complete removal of `demos/segmentation/`
+- Complete removal of `demos/pose_estimation/`
+- Complete removal of `demos/face_recognition/`
+- Removal of `demos/denoiser/`
+- Removal of `demos/dncnn_yolo/`
+- Removal of `demos/object_det_and_seg/`
+- Removal of `demos/noiseVideoMaker/`
+
+#### 4.2 Legacy Configuration File Removal
+- Complete removal of JSON configuration files in `example/` directory
+- Removal of `example/dx_postprocess/` JSON files
+- Removal of Debian package related files (`debian/`)
+- Removal of Docker build files (`docker/Dockerfile.app.build`)
+
+#### 4.3 Legacy Code Cleanup
+- Removal of `demo_utils/` directory
+- Removal of duplicate or unused code
+- Removal of old YOLOv5 post-processing files
+- Removal of RISCV64 architecture support
+
+### 5. Migration Guide
+
+#### 5.1 Notice for Existing Users
+v3.0.0 is a major update that includes **Breaking Changes** compared to v2.x.
+
+- **Demo Code**: The existing `demos/` directory has been completely removed. Please refer to the new examples in `src/cpp_example/` and `src/python_example/`.
+- **JSON Configuration Files**: JSON files in the existing `example/` directory have been removed. Python examples are configured directly through command-line arguments.
+- **YOLO Post-processing Type Names**: Some have been changed, but aliases are provided for backward compatibility.
+
+#### 5.2 Recommended Upgrade Path
+1. Refer to Python example documentation
+2. Check example code in `src/python_example/` or `src/cpp_example/` directory
+3. Install Python dependencies through `requirements.txt`
+4. Use build scripts (`build.sh` or `build.bat`)
+
+### 6. Known Issues
+- When using the PPU model for face detection & pose estimation, `dx-compiler v2.1.0 and v2.2.0` does not currently support converting face and pose models to PPU format. This feature will be added in a future release. The PPU models used in the demo were converted using dx-compiler `v1.0.0(dx_com v1.60.1)`.
+
+---
+
+## DX-APP v2.1.0 / 2025-11-28
+
+### 1. Changed
+- Enhanced build script documentation and usage instructions
+- Updated cmake configuration in build.bat to use C++17 and v143 to enhance documentation windows build script(visual studio 2022)
+- Model package updated from version 2.0.0 to 2.1.0 to support PPU models
+- Improved demo script with additional PPU-Demo (1, 4, 6, 8, 11)
+- Added CPU-specific PyTorch wheel source (https://download.pytorch.org/whl/cpu) in templates/python/requirements.txt.
+
+### 2. Fixed
+- Fixed Windows MSBuild compilation warnings by replacing implicit type casts with explicit static_cast
+- Improved tensor allocation in imagenet classification example
+- Updated numBoxes calculation based on post-processing type in LayerReorder
+- Rename YOLO post-processing types and add aliasing for backward compatibility
+- Added VSCode configuration files for usability
+- Fixed errors that occurred when using VAAPI with camera input
+- Enhanced yolo application to display final FPS even when forcefully terminated during camera input usage
+- Enhanced user input handling for run_demo selection with a countdown timer (20s)
+
+### 3. Added
+- Windows Environment Support
+DX-APP now fully supports the Windows operating system! In response to user requests, we've expanded compatibility beyond Linux to include Windows, enabling a broader range of development environments to take advantage of DX-APP.
+    - **OS**: Windows 10 / 11
+    - **DEEPX M1 Driver Version**: v1.7.1 or higher
+    - **DEEPX M1 Runtime Lib Version**: v3.1.0 or higher
+    - **Python**: Version 3.8 or higher (required for Python module support)
+    - **Compiler**: Visual Studio Community 2022 (required for building C++ examples)
+- Added automated build script (build.bat) for automatic build and Visual Studio solution generation
+- Three new PPU data types : BBOX (for object detection) / POSE (for pose estimation keypoints) / FACE (for face detection landmarks)
+- Enhanced post-processing functions to support PPU inference output format
+
+### 4. Known Issues
+- DeepLabV3 Semantic Segmentation model accuracy may be slightly degraded in dx-compiler(dx_com) v2.1.0. This will be fixed in the next release. The DeepLabV3 model used in the demo was converted using dx-compiler v2.0.0.
+- When using the PPU model for face detection & pose estimation, dx-compiler v2.1.0 does not currently support converting face and pose models to PPU format. This feature will be added in a future release. The PPU models used in the demo were converted using dx-compiler v1.0.0(dx_com v1.60.1).
+
+---
+
+## DX-APP v2.0.0 / 2025-09-08
+
+### 1. Changed
+- Moved the YOLO post-processing guide from 07_Python_Examples.md to a new, dedicated document 08_YOLO_Post_Processing_Pybind11.md.
+- Refactored yolo_pybind_example.py to use a RunAsync() + Wait() structure instead of callbacks. This ensures the output tensor order is correctly handled.
+- Major code refactoring and restructuring of demo applications
+- Consolidated common utilities into  directory
+- Removed deprecated and legacy codes
+- Updated documentation and resources
+- YoloPostProcess now filters and selects the correct tensor by output_name when USE_ORT=ON
+- Command-line help messages in various demos have been improved to clearly mark required parameters.
+- Replaced YOLOv5s-1 example json to YOLOv5s-6 json configuration file has been added for object detection.
+- Documentation has been updated to add Python requirements and modified some images.
+- feat: add OS and architecture checks in build script & update CPU specifications in documentation
+
+### 2. Fixed
+- FPS calculation bug in yolo_multi
+- Removed postprocessing code for legacy PPU models
+- Fixed postprocessing logic to support new output shapes of YOLO models when USE_ORT=OFF
+- Fixed typo error in framebuffer info file path (yolo_multi app)
+- Improved error messages for output tensor size mismatch and missing in Yolo post processing
+- Rename output tensors in json config 'yolov5s6_example.json'
+
+### 3. Added
+- Added  to cleanly purge the pip-installed package and local build artifacts (shared library, dist-info/egg-info, and build directory).
+- Added version guards in templates/python/yolo_pybind_example.py to ensure compatibility with DX-RT ≥ 3.0.0 and DXNN model version ≥ 7
+- Enhanced the JSON configuration to support a target_output_tensor_name key and a name field for each layer parameter.
+- Added a feature to filter output tensor using the target_output_tensor_name provided in the JSON configuration
+- Added a feature to automatically reorder model layer parameters in the JSON configuration to match the model's actual output tensor sequence.
+- Enhanced demo applications
+- Added  for easy demo execution
+- Added SCRFD decoding method for run_detector example
+- Added postprocessing support for yolo_pose and yolo_face models (available only when USE_ORT=ON)
+- Listed supported YOLO model types for YoloPostProcess in README
+- feat: add uninstall script and enhance color utility functions
+
+---
+
+## DX-APP v1.11.0 / 2025-07-23
+
+### 1. Changed
+- feat: enhance --clean option in build script for pybind artifacts
+- feat: update dxnn models version(1.40.2 to 1.60.1)
+- feat: auto run setup script or display a guide message when a file not found error occurs during example execution
+
+### 2. Fixed
+- feat: Improve error message readability in install, build scripts
+  - Apply color to error messages
+  - Reorder message output to display errors before help messages
+- Updated tensor index assignment in Yolo layer reordering
+- fix: resolve dx_postprocess Python lib build error and improve error handling
+
+---
+
+## DX-APP v1.10.0 / 2025-06-17
+
+- Initial create dx-app   
+- demo : classification    
+- demo : object detection    
+- demo : pose estimation    
+- demo : multi models for object detection and segmentation    
+- demo : semantic segmentation    
+- demo : multi channel object detection   
+- template : classification     
+- template : object detection    
+- template : python example (sync/async/pybind C++)

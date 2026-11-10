@@ -20,9 +20,9 @@ modules:
   - { repo: dx-modelzoo,            enabled: true }
   - { repo: dx_stream,              enabled: true }
   # enable after B1 confirmation
-  - { repo: dx-all-suite,           enabled: false }
-  - { repo: dx_app,                 enabled: false }
-  - { repo: dx-compiler,            enabled: false }
+  - { repo: dx-all-suite,           enabled: true }
+  - { repo: dx_app,                 enabled: true }
+  - { repo: dx-compiler,            enabled: true }
   - { repo: dx-runtime,             enabled: false }
   - { repo: dx_rt_npu_linux_driver, enabled: false }
   - { repo: dx_fw,                  enabled: false }
