@@ -8,12 +8,21 @@ theme:
   name: material
   features:
     - content.code.copy
+    - content.code.annotate
     - content.tabs.link
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.path
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - toc.follow
     - search.highlight
+    - search.suggest
+    - search.share
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -27,6 +36,11 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+plugins:
+  - search
+  - llmstxt:
+      full_output: llms-full.txt
 
 markdown_extensions:
   - admonition
