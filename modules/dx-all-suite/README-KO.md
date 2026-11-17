@@ -318,7 +318,7 @@ DX-AllSuite는 우리 NPU에서 최고 성능을 내도록 최적화된, 업계 
 DEEPX 기술 지원팀이 매끄러운 AI 솔루션 구축을 돕습니다.
 
 - **DEEPX Developer Portal**: [https://developer.deepx.ai](https://developer.deepx.ai) (최신 문서 및 SDK 릴리스 노트)
-- **Technical Support**: [tech-support@deepx.ai](mailto:tech-support@deepx.ai) (커스텀 모델 배포 및 하드웨어 통합 상담)
+- For technical questions, please ask in the DEEPX Developer Community: https://community.deepx.ai/c/support/5
 
 Copyright © DEEPX. All rights reserved.
 
