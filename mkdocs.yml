@@ -1,7 +1,7 @@
 site_name: Documentation
 site_description: Compile, run and ship AI models on DEEPX NPUs.
 site_url: https://developer.deepx.ai/
-repo_url: https://github.com/DEEPX-AI/docs
+repo_url: https://github.com/DEEPX-AI/dx-docs
 edit_uri: edit/main/docs/
 
 theme:
@@ -85,6 +85,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.snippets:
+      base_path:
+        - docs
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -140,74 +143,74 @@ nav:
           - "Agent driven development": en/tools/agent-driven-development.md
           - "Agent showcases": en/tools/agent-showcases.md
       - App:
-          - "DX-APP overview": en/app/index.md
-          - "Build DX-APP": en/app/build.md
-          - "Run the examples": en/app/run-examples.md
-          - "Model catalog": en/app/models.md
-          - "Multi model graph": en/app/multi-model-graph.md
-          - "Post processing": en/app/post-processing.md
+          - "DX-APP overview": en/tools/app/index.md
+          - "Build DX-APP": en/tools/app/build.md
+          - "Run the examples": en/tools/app/run-examples.md
+          - "Model catalog": en/tools/app/models.md
+          - "Multi model graph": en/tools/app/multi-model-graph.md
+          - "Post processing": en/tools/app/post-processing.md
           - "Develop":
-              - "Architecture": en/app/architecture.md
-              - "DX tool": en/app/dx-tool.md
-              - "Customize a YOLO model": en/app/customize-yolo.md
+              - "Architecture": en/tools/app/architecture.md
+              - "DX tool": en/tools/app/dx-tool.md
+              - "Customize a YOLO model": en/tools/app/customize-yolo.md
           - "Reference":
-              - "Third party licenses": en/app/licenses.md
+              - "Third party licenses": en/tools/app/licenses.md
       - Stream:
-          - "DX-Stream": en/stream/index.md
+          - "DX-Stream": en/tools/stream/index.md
           - "Install":
-              - "Build and install": en/stream/build.md
-              - "Build on Orange Pi 5 Plus": en/stream/build-orange-pi.md
-              - "Build on Windows": en/stream/build-windows.md
+              - "Build and install": en/tools/stream/build.md
+              - "Build on Orange Pi 5 Plus": en/tools/stream/build-orange-pi.md
+              - "Build on Windows": en/tools/stream/build-windows.md
           - "Use":
-              - "Pipelines": en/stream/pipelines.md
-              - "Write an application": en/stream/write-an-application.md
-              - "Python bindings (pydxs)": en/stream/python-bindings.md
-              - "User metadata": en/stream/user-metadata.md
+              - "Pipelines": en/tools/stream/pipelines.md
+              - "Write an application": en/tools/stream/write-an-application.md
+              - "Python bindings (pydxs)": en/tools/stream/python-bindings.md
+              - "User metadata": en/tools/stream/user-metadata.md
           - "Elements":
-              - "Elements": en/stream/elements/index.md
-              - "Multi stream domain": en/stream/elements/multi-stream-domain.md
-              - "DxPreprocess": en/stream/elements/dxpreprocess.md
-              - "DxInfer": en/stream/elements/dxinfer.md
-              - "DxPostprocess": en/stream/elements/dxpostprocess.md
-              - "DxTracker": en/stream/elements/dxtracker.md
-              - "DxOsd": en/stream/elements/dxosd.md
-              - "DxGather": en/stream/elements/dxgather.md
-              - "DxInputSelector": en/stream/elements/dxinputselector.md
-              - "DxOutputSelector": en/stream/elements/dxoutputselector.md
-              - "DxRate": en/stream/elements/dxrate.md
-              - "DxMsgConv": en/stream/elements/dxmsgconv.md
-              - "DxMsgBroker": en/stream/elements/dxmsgbroker.md
-              - "DxScale": en/stream/elements/dxscale.md
-              - "DxConvert": en/stream/elements/dxconvert.md
-              - "DxVnpuDec": en/stream/elements/dxvnpudec.md
-              - "DxVnpuEnc": en/stream/elements/dxvnpuenc.md
+              - "Elements": en/tools/stream/elements/index.md
+              - "Multi stream domain": en/tools/stream/elements/multi-stream-domain.md
+              - "DxPreprocess": en/tools/stream/elements/dxpreprocess.md
+              - "DxInfer": en/tools/stream/elements/dxinfer.md
+              - "DxPostprocess": en/tools/stream/elements/dxpostprocess.md
+              - "DxTracker": en/tools/stream/elements/dxtracker.md
+              - "DxOsd": en/tools/stream/elements/dxosd.md
+              - "DxGather": en/tools/stream/elements/dxgather.md
+              - "DxInputSelector": en/tools/stream/elements/dxinputselector.md
+              - "DxOutputSelector": en/tools/stream/elements/dxoutputselector.md
+              - "DxRate": en/tools/stream/elements/dxrate.md
+              - "DxMsgConv": en/tools/stream/elements/dxmsgconv.md
+              - "DxMsgBroker": en/tools/stream/elements/dxmsgbroker.md
+              - "DxScale": en/tools/stream/elements/dxscale.md
+              - "DxConvert": en/tools/stream/elements/dxconvert.md
+              - "DxVnpuDec": en/tools/stream/elements/dxvnpudec.md
+              - "DxVnpuEnc": en/tools/stream/elements/dxvnpuenc.md
           - "Operate":
-              - "Performance with GstShark": en/stream/performance.md
-              - "Debugging and troubleshooting": en/stream/debugging.md
-              - "Third party model licenses": en/stream/licenses.md
+              - "Performance with GstShark": en/tools/stream/performance.md
+              - "Debugging and troubleshooting": en/tools/stream/debugging.md
+              - "Third party model licenses": en/tools/stream/licenses.md
       - Model Zoo:
-          - "DX-ModelZoo": en/model-zoo/index.md
-          - "Install DX-ModelZoo": en/model-zoo/install.md
-          - "Evaluate models": en/model-zoo/evaluate.md
-          - "Datasets": en/model-zoo/datasets.md
-          - "Custom models and datasets": en/model-zoo/custom-models.md
-          - "Architecture": en/model-zoo/architecture.md
+          - "DX-ModelZoo": en/tools/model-zoo/index.md
+          - "Install DX-ModelZoo": en/tools/model-zoo/install.md
+          - "Evaluate models": en/tools/model-zoo/evaluate.md
+          - "Datasets": en/tools/model-zoo/datasets.md
+          - "Custom models and datasets": en/tools/model-zoo/custom-models.md
+          - "Architecture": en/tools/model-zoo/architecture.md
           - "Reference":
-              - "dxmz CLI": en/model-zoo/cli.md
-              - "YAML configuration": en/model-zoo/yaml-config.md
-              - "Python API": en/model-zoo/python-api.md
-              - "Preprocessing and postprocessing": en/model-zoo/processing-ops.md
+              - "dxmz CLI": en/tools/model-zoo/cli.md
+              - "YAML configuration": en/tools/model-zoo/yaml-config.md
+              - "Python API": en/tools/model-zoo/python-api.md
+              - "Preprocessing and postprocessing": en/tools/model-zoo/processing-ops.md
       - AI Studio:
-          - "DX AI Studio": en/ai-studio/index.md
-          - "Install and launch": en/ai-studio/install-and-launch.md
-          - "The hub": en/ai-studio/hub.md
-          - "Models and compiler": en/ai-studio/workflow.md
-          - "DX App": en/ai-studio/app.md
-          - "DX Stream": en/ai-studio/stream.md
-          - "Monitor and benchmark": en/ai-studio/monitor-and-benchmark.md
-          - "DX EdgeGuide": en/ai-studio/edge-guide.md
-          - "DX Cloud on AWS": en/ai-studio/cloud-aws.md
-          - "Reference": en/ai-studio/reference.md
+          - "DX AI Studio": en/tools/ai-studio/index.md
+          - "Install and launch": en/tools/ai-studio/install-and-launch.md
+          - "The hub": en/tools/ai-studio/hub.md
+          - "Models and compiler": en/tools/ai-studio/workflow.md
+          - "DX App": en/tools/ai-studio/app.md
+          - "DX Stream": en/tools/ai-studio/stream.md
+          - "Monitor and benchmark": en/tools/ai-studio/monitor-and-benchmark.md
+          - "DX EdgeGuide": en/tools/ai-studio/edge-guide.md
+          - "DX Cloud on AWS": en/tools/ai-studio/cloud-aws.md
+          - "Reference": en/tools/ai-studio/reference.md
   - Tutorials:
       - "Tutorials": en/tutorials/index.md
       - "Learn the SDK":

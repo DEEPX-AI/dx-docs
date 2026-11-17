@@ -224,7 +224,7 @@ The built in profiles and what they mean in DX-COM terms:
 
 ### Compile options
 
-`dxmz compile` passes every key of `compile` as a keyword argument to `dx_com.compile()`. It sets `model`, `output_dir`, `config` and `dataloader` itself, and sets `export_html: true` unless you set it. See [Compiler overview](../compiler/index.md) for the meaning of each DX-COM option.
+`dxmz compile` passes every key of `compile` as a keyword argument to `dx_com.compile()`. It sets `model`, `output_dir`, `config` and `dataloader` itself, and sets `export_html: true` unless you set it. See [Compiler overview](../../compiler/index.md) for the meaning of each DX-COM option.
 
 | Key | Meaning |
 |---|---|

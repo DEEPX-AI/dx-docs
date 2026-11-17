@@ -186,10 +186,10 @@ Key findings from our analysis:
 * **Throughput scales with the module:** the H1-Quattro reaches about 4× one M1; the M1M reaches 0.72 to 0.82× of the M1.
 * **ORT mode:** both modes give the same detections; choose per host by measurement.
 
-The full analysis, per run reports and dashboard data are in the [dx-all-suite repository](https://github.com/DEEPX-AI/dx-all-suite) under `dx-benchmark/`. The same data feeds DX Benchmark and DX EdgeGuide in [DX AI Studio](../ai-studio/monitor-and-benchmark.md#dx-benchmark).
+The full analysis, per run reports and dashboard data are in the [dx-all-suite repository](https://github.com/DEEPX-AI/dx-all-suite) under `dx-benchmark/`. The same data feeds DX Benchmark and DX EdgeGuide in [DX AI Studio](ai-studio/monitor-and-benchmark.md#dx-benchmark).
 
 ## Next steps
 
-* [Compare results in DX AI Studio](../ai-studio/monitor-and-benchmark.md#dx-benchmark)
-* [Pick hardware with DX EdgeGuide](../ai-studio/edge-guide.md)
+* [Compare results in DX AI Studio](ai-studio/monitor-and-benchmark.md#dx-benchmark)
+* [Pick hardware with DX EdgeGuide](ai-studio/edge-guide.md)
 * [DX-RT runtime](../runtime/index.md)

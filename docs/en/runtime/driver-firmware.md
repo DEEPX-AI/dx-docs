@@ -300,7 +300,7 @@ dxrt-cli -s
 
 The Yocto `dx-rt` package installs the tools under their old names: `dxrt-cli`, `run_model` and `parse_model`, plus `dxrtd`, `dxtop` and `dxbenchmark`.
 
-The `dx-yolo26-sample` package adds YOLO26 demo apps and a launcher, `/etc/dx-yolo26-sample/run.sh`, which takes a demo number from 0 to 4. Set `DXYOLO26_VARIANTS:pn-dx-yolo26 = "both"` to also build the synchronous variants. For DX-APP and the demos, see [DX-APP](../app/index.md).
+The `dx-yolo26-sample` package adds YOLO26 demo apps and a launcher, `/etc/dx-yolo26-sample/run.sh`, which takes a demo number from 0 to 4. Set `DXYOLO26_VARIANTS:pn-dx-yolo26 = "both"` to also build the synchronous variants. For DX-APP and the demos, see [DX-APP](../tools/app/index.md).
 
 ## Next steps
 

@@ -12,7 +12,7 @@ This page shows you how to build DX-Stream from source on Linux, check that GStr
 * A host with amd64 (x86_64) or aarch64 (arm64) CPU, 8 GB RAM (16 GB recommended) and 4 GB free disk space.
 * Ubuntu 20.04, 22.04, 24.04 or 26.04, or Debian 12 or 13.
 * A DX-M1 M.2 module connected to the host.
-* The NPU driver and DX-RT 3.5.0 or newer installed. Follow [Install the DEEPX SDK](../get-started/install.md). The DEEPX SDK installer can also build DX-Stream for you; use this page when you build DX-Stream on its own.
+* The NPU driver and DX-RT 3.5.0 or newer installed. Follow [Install the DEEPX SDK](../../get-started/install.md). The DEEPX SDK installer can also build DX-Stream for you; use this page when you build DX-Stream on its own.
 
 For Windows see [Build on Windows](build-windows.md). For the Orange Pi 5 Plus see [Build on Orange Pi 5 Plus](build-orange-pi.md).
 

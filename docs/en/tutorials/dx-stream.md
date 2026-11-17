@@ -103,6 +103,6 @@ A window shows the video with boxes and an FPS counter. The people counter adds 
 
 ## Next steps
 
-* [DX-Stream reference](../stream/index.md)
+* [DX-Stream reference](../tools/stream/index.md)
 * [YOLO26 four channel on RK3588](yolo26-rk3588.md)
 * [Platform notes](platform-notes.md)

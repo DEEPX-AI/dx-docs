@@ -11,57 +11,14 @@ You use it from the `dxcom` command line tool or from the `dx_com` Python module
 
 Current version: DX-COM 2.5.0 (DEEPX SDK 2.5.0).
 
-## Install
-
-```bash
-pip install dx-com
-```
-
-Works on x86_64 Linux and Windows. With [uv](https://docs.astral.sh/uv/): `uv pip install dx-com`.
-
-Verify:
-
-```bash
-dxcom -v
-python3 -c "import dx_com; print(dx_com.__version__)"
-```
-
-??? tip "How to set up a virtual environment first (recommended)"
-
-    Installing into a virtual environment keeps `dx-com` and its large dependencies (PyTorch, ONNX Runtime, OpenCV) isolated from your system Python. DX-COM pulls in around 8 GB on first install, so an isolated environment also makes it easy to remove later.
-
-    **With the standard `venv` module**
-
-    ```bash
-    python3 -m venv ~/dx-com-venv
-    source ~/dx-com-venv/bin/activate
-    pip install dx-com
-    ```
-
-    **With a specific Python version** (e.g. 3.12)
-
-    ```bash
-    python3.12 -m venv ~/dx-com-venv
-    source ~/dx-com-venv/bin/activate
-    pip install dx-com
-    ```
-
-    **With [uv](https://docs.astral.sh/uv/)** (faster downloads, automatic Python management)
-
-    ```bash
-    # Install uv (once)
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-
-    # Create the environment and install
-    uv venv ~/dx-com-venv --python 3.12
-    source ~/dx-com-venv/bin/activate
-    uv pip install dx-com
-    ```
-
-    To deactivate run `deactivate`. To remove entirely: `rm -rf ~/dx-com-venv`.
-
-    !!! note "Activate before every session"
-        `dxcom` and `import dx_com` only work while the environment is active. Activate it at the start of each terminal session with `source ~/dx-com-venv/bin/activate`.
+<!-- ----------------------------------------------------------------
+  EDITING NOTE
+  The install block below is pulled from a shared snippet file.
+  Do NOT edit it here — edit the source instead:
+    - docs/snippets/install-compiler.md
+  This snippet is also included in docs/en/get-started/install.md.
+----------------------------------------------------------------- -->
+--8<-- "snippets/install-compiler.md"
 
 For more install options (one-line script, repository clone, Docker) see the [Install page](../get-started/install.md#host-dx-com).
 

@@ -9,7 +9,7 @@ This page shows how to install the DX-APP dependencies, download models and buil
 
 ## Before you start
 
-* The NPU driver and DX-RT 3.5.0 or later are installed. If not, follow [Install the DEEPX SDK](../get-started/install.md).
+* The NPU driver and DX-RT 3.5.0 or later are installed. If not, follow [Install the DEEPX SDK](../../get-started/install.md).
 * `dxcli -s` shows your NPU, and the first line of `dxcli --version` is `DXRT v3.5.0` or later.
 * You have a clone of [DEEPX-AI/dx_app](https://github.com/DEEPX-AI/dx_app). Run every command on this page from the `dx_app/` folder.
 
@@ -300,7 +300,7 @@ bin\yolov7_640x640_sync.exe -m assets\models\yolov7_640x640.dxnn -i sample\img\s
 |---|---|
 | `error: externally-managed-environment` from pip | Use a virtual environment: `./install.sh --all --venv_path ./venv-dxnn` and `./build.sh --venv_path ./venv-dxnn` |
 | `error while loading shared libraries: libdxrt.so` | DX-RT is not in the library cache. Run `sudo ldconfig` after installing DX-RT to `/usr/local/lib` |
-| `ModuleNotFoundError: No module named 'dx_engine'` | Activate the environment where DX-RT's Python package is installed. See [Install the DEEPX SDK](../get-started/install.md) |
+| `ModuleNotFoundError: No module named 'dx_engine'` | Activate the environment where DX-RT's Python package is installed. See [Install the DEEPX SDK](../../get-started/install.md) |
 | `ModuleNotFoundError: No module named 'dx_postprocess'` | Run `./build.sh` with that environment active, or install it by hand as shown above |
 | `Missing dependency: requests` from `setup.sh` | `python3 -m pip install requests` in the downloader's Python |
 | `--docker_volume_path must be provided in container mode` | Pass `--docker_volume_path=<path>` when you run `setup.sh` in a container |
@@ -310,4 +310,4 @@ bin\yolov7_640x640_sync.exe -m assets\models\yolov7_640x640.dxnn -i sample\img\s
 
 * [Run the examples](run-examples.md)
 * [Model catalog](models.md)
-* [Troubleshooting](../get-started/troubleshooting.md)
+* [Troubleshooting](../../get-started/troubleshooting.md)

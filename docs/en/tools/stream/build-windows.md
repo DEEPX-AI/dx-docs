@@ -18,7 +18,7 @@ Install these by hand before you run `install.bat`:
 | Python 3.9 or newer | Runs Meson | Check "Add Python to PATH" in the installer. |
 | GStreamer MSVC x86_64, 1.16.3 or newer | Multimedia framework | Install both the Runtime and the Development package, same version. 1.16.3 and 1.28.4 are verified. Default path `C:\Program Files\gstreamer\1.0\msvc_x86_64`. |
 | pkg-config | Finds dependencies | Only if GStreamer does not ship a working one. Use the x64 MSI from [pkgconf releases](https://github.com/pkgconf/pkgconf/releases). |
-| DEEPX SDK for Windows (`DX_SDK_*.exe`) | NPU runtime `dxrt` | Sets `DEEPX_SDK_DIR` (default `C:\Program Files\DEEPX\DX_SDK_<version>`). See [Install the DEEPX SDK](../get-started/install.md). |
+| DEEPX SDK for Windows (`DX_SDK_*.exe`) | NPU runtime `dxrt` | Sets `DEEPX_SDK_DIR` (default `C:\Program Files\DEEPX\DX_SDK_<version>`). See [Install the DEEPX SDK](../../get-started/install.md). |
 
 You also need a DX-M1 (or compatible) NPU for inference.
 

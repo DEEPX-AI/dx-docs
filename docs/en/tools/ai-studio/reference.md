@@ -114,4 +114,4 @@ We provide these third party models and datasets as is, for convenience, and are
 
 ## Next steps
 
-* [Glossary](../reference/glossary.md)
+* [Glossary](../../reference/glossary.md)

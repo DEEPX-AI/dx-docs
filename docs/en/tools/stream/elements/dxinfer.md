@@ -63,4 +63,4 @@ JSON example (`dx_stream/configs/YoloV5S_PPU/inference_config.json`, path relati
 
 * [DxPostprocess](dxpostprocess.md)
 * [Write an application](../write-an-application.md)
-* [DX-RT overview](../../runtime/index.md)
+* [DX-RT overview](../../../runtime/index.md)

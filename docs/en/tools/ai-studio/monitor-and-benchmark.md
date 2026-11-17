@@ -43,7 +43,7 @@ An SSE connection only shows that the browser is connected, not that the NPU is 
 
 ## DX Benchmark
 
-DX Benchmark shows stored DEEPX NPU benchmark results in the browser: throughput, latency and multi stream numbers per model, with charts. It is **read only**. New results come from the standalone [DX-Benchmark](../tools/benchmark.md) command line tool (`./run.sh run`), and the same data feeds DX EdgeGuide.
+DX Benchmark shows stored DEEPX NPU benchmark results in the browser: throughput, latency and multi stream numbers per model, with charts. It is **read only**. New results come from the standalone [DX-Benchmark](../benchmark.md) command line tool (`./run.sh run`), and the same data feeds DX EdgeGuide.
 
 | Tab | What it shows |
 |---|---|
@@ -72,6 +72,6 @@ The **Dashboard** has five sub tabs:
 
 ## Next steps
 
-* [Run your own benchmark with DX-Benchmark](../tools/benchmark.md)
+* [Run your own benchmark with DX-Benchmark](../benchmark.md)
 * [Get a hardware recommendation in DX EdgeGuide](edge-guide.md)
-* [NPU driver and firmware](../runtime/driver-firmware.md)
+* [NPU driver and firmware](../../runtime/driver-firmware.md)

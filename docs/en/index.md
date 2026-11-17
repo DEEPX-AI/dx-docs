@@ -59,7 +59,7 @@ flowchart LR
 
     Ready to run example applications for hundreds of vision models.
 
-    [:octicons-arrow-right-24: App](app/index.md)
+    [:octicons-arrow-right-24: App](tools/app/index.md)
 
 - :material-video-input-component: **DX-Stream**
 
@@ -67,7 +67,7 @@ flowchart LR
 
     GStreamer elements for real-time video inference pipelines on the NPU.
 
-    [:octicons-arrow-right-24: Stream](stream/index.md)
+    [:octicons-arrow-right-24: Stream](tools/stream/index.md)
 
 - :material-database: **DX-ModelZoo**
 
@@ -75,7 +75,7 @@ flowchart LR
 
     Pretrained models you can compile, run and evaluate out of the box.
 
-    [:octicons-arrow-right-24: Model Zoo](model-zoo/index.md)
+    [:octicons-arrow-right-24: Model Zoo](tools/model-zoo/index.md)
 
 - :material-monitor-dashboard: **DX AI Studio**
 
@@ -83,7 +83,7 @@ flowchart LR
 
     A desktop app that runs the whole workflow from one window.
 
-    [:octicons-arrow-right-24: AI Studio](ai-studio/index.md)
+    [:octicons-arrow-right-24: AI Studio](tools/ai-studio/index.md)
 
 - :material-tools: **More tools**
 

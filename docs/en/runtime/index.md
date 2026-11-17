@@ -7,6 +7,17 @@ description: Overview of DX-RT, the runtime that loads compiled models and runs 
 
 DX-RT is our runtime for DEEPX NPUs. It loads a compiled `.dxnn` model, sends input to the NPU, runs any CPU tasks with ONNX Runtime and gives you the output tensors. You use it through the C++ library `libdxrt` or the Python package `dx_engine`.
 
+<!-- ----------------------------------------------------------------
+  EDITING NOTE
+  The install block below is pulled from a shared snippet file.
+  Do NOT edit it here — edit the source instead:
+    - docs/snippets/install-runtime.md
+  This snippet is also included in docs/en/get-started/install.md.
+----------------------------------------------------------------- -->
+--8<-- "snippets/install-runtime.md"
+
+For Docker and building from source, see the [Install page](../get-started/install.md).
+
 ## Where to go
 
 * [Run inference](run-inference.md): sync, async, batch and multi input inference in Python and C++.

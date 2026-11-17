@@ -43,7 +43,7 @@ Run all following steps on the Orange Pi.
     sudo apt install ./linux-headers-current-rockchip-rk3588_1.2.0_arm64.deb
     ```
 
-1. Build and install the NPU driver and DX-RT for aarch64 as described in [Install the DEEPX SDK](../get-started/install.md) and [NPU driver and firmware](../runtime/driver-firmware.md). On this board the source route is:
+1. Build and install the NPU driver and DX-RT for aarch64 as described in [Install the DEEPX SDK](../../get-started/install.md) and [NPU driver and firmware](../../runtime/driver-firmware.md). On this board the source route is:
 
     ```bash
     mkdir -p ~/dxnn && cd ~/dxnn

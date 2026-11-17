@@ -23,7 +23,7 @@ It is a launcher hub plus nine tool servers, written in pure Python (standard li
 | **DX EdgeGuide** | Get a hardware recommendation from real benchmark results | [DX EdgeGuide](edge-guide.md) |
 | **DX Benchmark** | Browse and compare stored NPU benchmark results | [Monitor and benchmark](monitor-and-benchmark.md#dx-benchmark) |
 | **DX Monitor** | Watch live NPU and host telemetry | [Monitor and benchmark](monitor-and-benchmark.md) |
-| **DX Agent Dev** | Describe an app in plain words and let a coding agent build it | [Agent driven development](../tools/agent-driven-development.md#in-dx-ai-studio) |
+| **DX Agent Dev** | Describe an app in plain words and let a coding agent build it | [Agent driven development](../agent-driven-development.md#in-dx-ai-studio) |
 | **DX Cloud** | Compile on AWS through our AWS Marketplace products | [DX Cloud on AWS](cloud-aws.md) |
 
 The tool names are the labels you see in the studio. DX App runs the DX-APP examples, DX Stream runs DX-Stream pipelines, DX Compiler drives DX-COM and DX Model Zoo shows the DX-ModelZoo catalog.
@@ -58,4 +58,4 @@ flowchart LR
 ## Next steps
 
 * [Install and launch DX AI Studio](install-and-launch.md)
-* [Install the DEEPX SDK](../get-started/install.md)
+* [Install the DEEPX SDK](../../get-started/install.md)

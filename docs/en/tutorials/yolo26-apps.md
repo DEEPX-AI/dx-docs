@@ -126,5 +126,5 @@ Add `src/cpp_example/<category>/<model>/{<model>_sync.cpp,<model>_async.cpp,fact
 ## Next steps
 
 * [YOLO26 four tasks](yolo26-four-tasks.md)
-* [DX-APP reference](../app/index.md)
-* [Model Zoo](../model-zoo/index.md)
+* [DX-APP reference](../tools/app/index.md)
+* [Model Zoo](../tools/model-zoo/index.md)

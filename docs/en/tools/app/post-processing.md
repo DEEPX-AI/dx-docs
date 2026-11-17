@@ -11,7 +11,7 @@ Post processing turns raw NPU output tensors into results: it decodes boxes, sco
 
 ## Before you start
 
-* DX-RT is installed, because `dx_postprocess` links against `libdxrt`. See [Install the DEEPX SDK](../get-started/install.md).
+* DX-RT is installed, because `dx_postprocess` links against `libdxrt`. See [Install the DEEPX SDK](../../get-started/install.md).
 * Python 3.8 or later, a C++14 compiler (GCC 7.5 or later, or Clang) and CMake 3.16 or later.
 
 ## Which code each example uses

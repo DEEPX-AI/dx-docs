@@ -10,7 +10,7 @@ This page documents the Python classes of DX-ModelZoo 1.0.0, so you can run eval
 ## Before you start
 
 * DX-ModelZoo installed, see [Install DX-ModelZoo](install.md).
-* For NPU sessions: `dx_engine` from DX-RT, see [DX-RT Python API](../runtime/python-api.md).
+* For NPU sessions: `dx_engine` from DX-RT, see [DX-RT Python API](../../runtime/python-api.md).
 
 ## Quick example
 

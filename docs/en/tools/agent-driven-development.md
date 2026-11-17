@@ -91,7 +91,7 @@ These DX-COM limits also apply when you compile by hand:
 
 ## In DX AI Studio
 
-The **DX Agent Dev** tool in [DX AI Studio](../ai-studio/index.md) runs the same agents from the browser.
+The **DX Agent Dev** tool in [DX AI Studio](ai-studio/index.md) runs the same agents from the browser.
 
 1. **Connect an agent.** The console detects installed CLIs: Claude Code (`claude`), GitHub Copilot CLI (`copilot`), Cursor (`cursor-agent`), Codex (`codex`) and OpenCode (`opencode`). A badge shows whether each is signed in; if not, it shows the command to run, then checks again.
 1. **Set the run:**
@@ -109,4 +109,4 @@ A wall clock timeout frees the slot when a run gets stuck. If the tool says the 
 
 * [See what agents built from one prompt](agent-showcases.md)
 * [Compile by hand with DX-COM](../compiler/index.md)
-* [DX-APP examples](../app/index.md)
+* [DX-APP examples](app/index.md)

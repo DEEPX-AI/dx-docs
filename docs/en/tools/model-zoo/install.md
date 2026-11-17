@@ -11,7 +11,7 @@ This page shows the setup steps that are specific to DX-ModelZoo: installing the
 
 * Linux on x86-64 (on Windows, use WSL2).
 * Python 3.8 to 3.14.
-* The DEEPX SDK installed as described in [Install the DEEPX SDK](../get-started/install.md). DX-ModelZoo uses two of its parts:
+* The DEEPX SDK installed as described in [Install the DEEPX SDK](../../get-started/install.md). DX-ModelZoo uses two of its parts:
 
 | Part | Needed for | Version |
 |---|---|---|

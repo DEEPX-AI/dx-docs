@@ -73,5 +73,5 @@ The C++ examples are `bin/<variant>_sync` and `bin/<variant>_async`.
 
 ## Next steps
 
-* [Install the DEEPX SDK](../get-started/install.md) if the NPU driver and DX-RT are not installed yet.
+* [Install the DEEPX SDK](../../get-started/install.md) if the NPU driver and DX-RT are not installed yet.
 * [Build DX-APP](build.md) and run your first example.

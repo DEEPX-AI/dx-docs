@@ -66,4 +66,4 @@ The current selection is kept in the URL (a link from DX Benchmark reproduces th
 ## Next steps
 
 * [Compare stored results in DX Benchmark](monitor-and-benchmark.md#dx-benchmark)
-* [Benchmark your own hardware with DX-Benchmark](../tools/benchmark.md)
+* [Benchmark your own hardware with DX-Benchmark](../benchmark.md)

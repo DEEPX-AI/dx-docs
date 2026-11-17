@@ -210,11 +210,11 @@ To evaluate a DX-ModelZoo model instead (ONNX baseline, compile, NPU evaluation)
 ./getting-started/modelzoo-2_run_first_npu_model.sh --skip-onnx --skip-compile
 ```
 
-The default model `resnet50_224x224` needs the full ImageNet validation set (50,000 images) in `getting-started/modelzoo/datasets/ILSVRC2012/val`. See [DX-ModelZoo](../model-zoo/index.md).
+The default model `resnet50_224x224` needs the full ImageNet validation set (50,000 images) in `getting-started/modelzoo/datasets/ILSVRC2012/val`. See [DX-ModelZoo](../tools/model-zoo/index.md).
 
 ## Next steps
 
 * [Learn the DX-COM options and config file](../compiler/index.md)
 * [Write a full application with the Python API](../runtime/python-api.md)
-* [Run ready made demos with DX-APP](../app/index.md)
-* [Build video pipelines with DX-Stream](../stream/index.md)
+* [Run ready made demos with DX-APP](../tools/app/index.md)
+* [Build video pipelines with DX-Stream](../tools/stream/index.md)

@@ -11,7 +11,7 @@ This page shows you how to start DX AI Studio, open it from another computer and
 
 * Linux: Debian 12 or 13, or Ubuntu 20.04 to 26.04.
 * Python 3.8 or newer. The base studio uses only the Python standard library (`dependencies = []`), so there is no `pip install` step.
-* The DEEPX SDK checkout (`dx-all-suite`) with `dx-ai-studio` next to `dx-runtime` and `dx-compiler`. See [Install the DEEPX SDK](../get-started/install.md).
+* The DEEPX SDK checkout (`dx-all-suite`) with `dx-ai-studio` next to `dx-runtime` and `dx-compiler`. See [Install the DEEPX SDK](../../get-started/install.md).
 
 ### What each feature needs
 

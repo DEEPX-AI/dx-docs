@@ -9,7 +9,7 @@ This page shows how to add your own YOLO family model to DX-APP as a C++ and Pyt
 
 ## Before you start
 
-* Your model is compiled to a `.dxnn` file with DX-COM. See the [DX-COM overview](../compiler/index.md).
+* Your model is compiled to a `.dxnn` file with DX-COM. See the [DX-COM overview](../../compiler/index.md).
 * Copy the file to `assets/models/<variant>.dxnn`. The variant is the file stem, for example `yolo-custom_640x640`.
 * DX-APP is built. See [Build DX-APP](build.md).
 

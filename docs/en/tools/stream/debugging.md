@@ -192,5 +192,5 @@ Check with `ps -ef | grep kafka` and start the broker as in [Pipelines](pipeline
 ## Next steps
 
 * [Performance with GstShark](performance.md)
-* [Get started troubleshooting](../get-started/troubleshooting.md)
+* [Get started troubleshooting](../../get-started/troubleshooting.md)
 * [Elements](elements/index.md)

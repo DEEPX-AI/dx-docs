@@ -45,10 +45,10 @@ Platform specific setup (Raspberry Pi 5, Orange Pi 5 Plus, Intel GPU) is on [Pla
 
 * New to the SDK: start with [Set up the tutorials](setup.md), then [Run the DX-APP examples](dx-app.md).
 * Want a first result in minutes: pick a demo above that matches your hardware.
-* Want the reference behind the tutorials: [DX-COM](../compiler/index.md), [DX-RT](../runtime/index.md), [DX-APP](../app/index.md), [DX-Stream](../stream/index.md).
+* Want the reference behind the tutorials: [DX-COM](../compiler/index.md), [DX-RT](../runtime/index.md), [DX-APP](../tools/app/index.md), [DX-Stream](../tools/stream/index.md).
 
 ## Next steps
 
 * [Set up the tutorials](setup.md)
 * [Quickstart](../get-started/quickstart.md)
-* [Model Zoo](../model-zoo/index.md)
+* [Model Zoo](../tools/model-zoo/index.md)

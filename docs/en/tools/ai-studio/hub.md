@@ -23,7 +23,7 @@ The hub is the DX AI Studio home screen: every tool opens from here and runs und
 | **Explore DX AI Studio** and **Physical AI ecosystem** chips | Open the platform overview and the DEEPX ecosystem page |
 | Bottom link bar | Links to Get Started, S/W Download, Tech Docs, Documents, Model Zoo, GitHub and deepx.ai |
 
-Example: enter `compile yolo26n to DXNN`, press **Build it**, then select the Compiler route card. Check the model and config in DX Compiler before you compile. An agent route needs an installed, signed in coding CLI (see [Agent driven development](../tools/agent-driven-development.md#in-dx-ai-studio)).
+Example: enter `compile yolo26n to DXNN`, press **Build it**, then select the Compiler route card. Check the model and config in DX Compiler before you compile. An agent route needs an installed, signed in coding CLI (see [Agent driven development](../agent-driven-development.md#in-dx-ai-studio)).
 
 ## Top bar
 

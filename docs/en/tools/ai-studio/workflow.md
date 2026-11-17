@@ -69,7 +69,7 @@ DX Compiler turns a trained ONNX model into a `.dxnn` file for the DEEPX NPU. It
 
 ### If compilation fails
 
-Read the Setup reason or the last failing phase in **Compiler Log**, fix the SDK, input, dataset or config, and retry. A graph preview or an unfinished job is not a produced `.dxnn`. For DX-COM options and config keys, see the [DX-COM section](../compiler/index.md).
+Read the Setup reason or the last failing phase in **Compiler Log**, fix the SDK, input, dataset or config, and retry. A graph preview or an unfinished job is not a produced `.dxnn`. For DX-COM options and config keys, see the [DX-COM section](../../compiler/index.md).
 
 The compiled `.dxnn` runs in [DX App](app.md) and [DX Stream](stream.md). To compile in the cloud instead, see [DX Cloud on AWS](cloud-aws.md).
 
@@ -77,4 +77,4 @@ The compiled `.dxnn` runs in [DX App](app.md) and [DX Stream](stream.md). To com
 
 * [Run the compiled model in DX App](app.md)
 * [Build a pipeline in DX Stream](stream.md)
-* [DX-COM compiler documentation](../compiler/index.md)
+* [DX-COM compiler documentation](../../compiler/index.md)

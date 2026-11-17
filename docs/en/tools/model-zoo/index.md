@@ -122,4 +122,4 @@ The 497 models in 1.0.0 are 420 computer vision models, 14 PPU models and 63 pre
 
 * [Install DX-ModelZoo](install.md)
 * [Evaluate models](evaluate.md)
-* [Compiler overview](../compiler/index.md)
+* [Compiler overview](../../compiler/index.md)

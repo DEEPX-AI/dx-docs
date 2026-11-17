@@ -14,7 +14,7 @@ Each file is compiled from a publicly available third party model that keeps its
 For commercial use, either:
 
 * get a license from the original model provider, or
-* use your own commercially licensed models, compiled with [DX-COM](../compiler/index.md).
+* use your own commercially licensed models, compiled with [DX-COM](../../compiler/index.md).
 
 DEEPX is not responsible for legal issues from unauthorized commercial use of these models. You are responsible for following every license that applies.
 
@@ -37,4 +37,4 @@ DEEPX is not responsible for legal issues from unauthorized commercial use of th
 ## Next steps
 
 * [DX-ModelZoo](../model-zoo/index.md)
-* [DX-COM](../compiler/index.md)
+* [DX-COM](../../compiler/index.md)

@@ -37,7 +37,7 @@ The IDs connect the stages: `dxinfer` reads the tensor whose `preprocess-id` mat
 | Video transform | [DxScale](elements/dxscale.md), [DxConvert](elements/dxconvert.md) |
 | DX-H1 V-NPU codec | [DxVnpuDec](elements/dxvnpudec.md), [DxVnpuEnc](elements/dxvnpuenc.md) |
 
-`dxpreprocess`, `dxpostprocess` and `dxmsgconv` load your own shared library when the built in behavior does not fit your model. Models must be compiled to `.dxnn` with DX-COM first (see [DX-COM](../compiler/index.md)).
+`dxpreprocess`, `dxpostprocess` and `dxmsgconv` load your own shared library when the built in behavior does not fit your model. Models must be compiled to `.dxnn` with DX-COM first (see [DX-COM](../../compiler/index.md)).
 
 ## Where to go
 
@@ -54,5 +54,5 @@ The IDs connect the stages: `dxinfer` reads the tensor whose `preprocess-id` mat
 
 ## Next steps
 
-* [Install the DEEPX SDK](../get-started/install.md)
+* [Install the DEEPX SDK](../../get-started/install.md)
 * [Build and install DX-Stream](build.md)

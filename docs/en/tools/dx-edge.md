@@ -21,7 +21,7 @@ flowchart LR
   D --> E
 ```
 
-The Greengrass Solution includes the compile pipeline, so it is the single stack option. Choose the Compiler Solution when you only need compilation and manage device runtimes yourself. You can also drive both from [DX Cloud in DX AI Studio](../ai-studio/cloud-aws.md).
+The Greengrass Solution includes the compile pipeline, so it is the single stack option. Choose the Compiler Solution when you only need compilation and manage device runtimes yourself. You can also drive both from [DX Cloud in DX AI Studio](ai-studio/cloud-aws.md).
 
 You pay for the AWS resources you use. See each Marketplace listing for software pricing and terms. AWS services used: CloudFormation, S3, Lambda, Step Functions, EC2, Systems Manager, CloudWatch Logs, IoT Core and IoT Greengrass V2.
 
@@ -29,7 +29,7 @@ You pay for the AWS resources you use. See each Marketplace listing for software
 
 * An AWS account with permission to launch EC2 instances or create CloudFormation stacks.
 * The AWS CLI configured on your machine (`aws configure`, then check with `aws sts get-caller-identity`).
-* An ONNX model and its JSON compile config. Our model zoo publishes a validated config for each model (see [DX-ModelZoo](../model-zoo/index.md)).
+* An ONNX model and its JSON compile config. Our model zoo publishes a validated config for each model (see [DX-ModelZoo](model-zoo/index.md)).
 * An existing VPC and subnet with outbound HTTPS to S3, Systems Manager and CloudWatch Logs. A private subnet needs a NAT gateway or VPC endpoints.
 
 ## Compile config
@@ -242,7 +242,7 @@ gst-launch-1.0 urisourcebin uri=file://$INPUT_VIDEO_PATH ! decodebin ! \
   videoconvert ! fpsdisplaysink sync=false
 ```
 
-The post processing library is model specific. For another model, change `library-file-path` together with `model-path`. See the [DX-Stream section](../stream/index.md) for the elements.
+The post processing library is model specific. For another model, change `library-file-path` together with `model-path`. See the [DX-Stream section](stream/index.md) for the elements.
 
 ## Cost
 
@@ -278,5 +278,5 @@ For support, contact tech_support@deepx.ai.
 ## Next steps
 
 * [Set up a Greengrass device](dx-edge-devices.md)
-* [Use DX Cloud in DX AI Studio](../ai-studio/cloud-aws.md)
+* [Use DX Cloud in DX AI Studio](ai-studio/cloud-aws.md)
 * [Compile locally with DX-COM](../compiler/index.md)

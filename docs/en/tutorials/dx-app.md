@@ -104,5 +104,5 @@ Each example prints a performance summary, and `~/dx-app-out` holds the images w
 ## Next steps
 
 * [Deploy a custom model](custom-model.md)
-* [DX-APP reference](../app/index.md)
-* [Model Zoo](../model-zoo/index.md)
+* [DX-APP reference](../tools/app/index.md)
+* [Model Zoo](../tools/model-zoo/index.md)

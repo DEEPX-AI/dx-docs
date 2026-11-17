@@ -5,7 +5,7 @@ description: Run DX-Stream pipelines from Python or C++, read results from metad
 
 # Write an application
 
-This page shows you how to run a DX-Stream pipeline from your own Python or C++ program, read the results, and plug in your own model logic through custom libraries. It assumes your model is already compiled to `.dxnn` with [DX-COM](../compiler/index.md).
+This page shows you how to run a DX-Stream pipeline from your own Python or C++ program, read the results, and plug in your own model logic through custom libraries. It assumes your model is already compiled to `.dxnn` with [DX-COM](../../compiler/index.md).
 
 ## Before you start
 

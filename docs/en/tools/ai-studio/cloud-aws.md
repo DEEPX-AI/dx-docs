@@ -7,7 +7,7 @@ description: Connect DX AI Studio to AWS, prepare a Marketplace stack, compile O
 
 DX Cloud lets you compile an `.onnx` model into a `.dxnn` on AWS from inside DX AI Studio, with no local `dxcom`, and manage Greengrass devices that run the DEEPX runtime.
 
-Open **DX Cloud** from the hub card, at `/cloud/`, or with `Alt`+`9`. Its internal Python package is named `dx_edge`; it is not DX EdgeGuide. The full AWS walkthrough without the studio is on the [DX-Edge](../tools/dx-edge.md) page.
+Open **DX Cloud** from the hub card, at `/cloud/`, or with `Alt`+`9`. Its internal Python package is named `dx_edge`; it is not DX EdgeGuide. The full AWS walkthrough without the studio is on the [DX-Edge](../dx-edge.md) page.
 
 ## Before you start
 
@@ -111,5 +111,5 @@ Select the stack's delete action and type its exact name. Deletion is blocked wh
 
 ## Next steps
 
-* [DX-Edge: the full AWS guide](../tools/dx-edge.md)
+* [DX-Edge: the full AWS guide](../dx-edge.md)
 * [Compile locally in DX Compiler](workflow.md#dx-compiler)

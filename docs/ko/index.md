@@ -59,7 +59,7 @@ flowchart LR
 
     수백 가지 비전 모델을 위한 즉시 실행 가능한 예제 애플리케이션입니다.
 
-    [:octicons-arrow-right-24: 앱](../en/app/index.md)
+    [:octicons-arrow-right-24: 앱](../en/tools/app/index.md)
 
 - :material-video-input-component: **DX-Stream**
 
@@ -67,7 +67,7 @@ flowchart LR
 
     NPU에서 실시간 영상 추론 파이프라인을 위한 GStreamer 요소입니다.
 
-    [:octicons-arrow-right-24: 스트림](../en/stream/index.md)
+    [:octicons-arrow-right-24: 스트림](../en/tools/stream/index.md)
 
 - :material-database: **DX-ModelZoo**
 
@@ -75,7 +75,7 @@ flowchart LR
 
     즉시 컴파일, 실행 및 평가할 수 있는 사전 학습된 모델입니다.
 
-    [:octicons-arrow-right-24: 모델 주](../en/model-zoo/index.md)
+    [:octicons-arrow-right-24: 모델 주](../en/tools/model-zoo/index.md)
 
 - :material-monitor-dashboard: **DX AI Studio**
 
@@ -83,7 +83,7 @@ flowchart LR
 
     하나의 창에서 전체 워크플로우를 실행하는 데스크톱 앱입니다.
 
-    [:octicons-arrow-right-24: AI 스튜디오](../en/ai-studio/index.md)
+    [:octicons-arrow-right-24: AI 스튜디오](../en/tools/ai-studio/index.md)
 
 - :material-tools: **추가 도구**
 

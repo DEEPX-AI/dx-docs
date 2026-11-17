@@ -13,7 +13,7 @@ This section covers the tools around the core SDK that help you measure, deploy 
 | **DX-Edge** | Compile models and deploy the runtime through AWS Marketplace and AWS IoT Greengrass | | [DX-Edge](dx-edge.md) |
 | **Kubernetes device plugin** | Schedule DX-M1 NPUs in Kubernetes as the resource `deepx.ai/dx-m1` (Helm chart `dx-npu`) | 0.1.0 | [Kubernetes](kubernetes.md) |
 | **Agent driven development** | Build NPU apps from plain language prompts with an AI coding agent | Beta | [Agent driven development](agent-driven-development.md) |
-| **DX AI Studio** | Browser workspace for all of the above and the SDK tools | Beta, 0.1.1 | [DX AI Studio](../ai-studio/index.md) |
+| **DX AI Studio** | Browser workspace for all of the above and the SDK tools | Beta, 0.1.1 | [DX AI Studio](ai-studio/index.md) |
 
 Two more tools live in other sections:
 
@@ -32,4 +32,4 @@ Two more tools live in other sections:
 ## Next steps
 
 * [Install the DEEPX SDK](../get-started/install.md)
-* [DX AI Studio](../ai-studio/index.md)
+* [DX AI Studio](ai-studio/index.md)
