@@ -5,7 +5,65 @@ description: Install the NPU driver, DX-RT and firmware on the device, DX-COM on
 
 # Install
 
-This page lets you install the DEEPX SDK 2.5.0: the runtime stack on the machine with the NPU, the compiler on your x86_64 host, or both through Docker.
+## Install the compiler
+
+The quickest way to get DX-COM is a single pip command. It works on any supported x86_64 Linux host — no NPU needed to compile.
+
+```bash
+pip install dx-com
+```
+
+Works on x86_64 Linux and Windows. With [uv](https://docs.astral.sh/uv/) the download is faster: `uv pip install dx-com`.
+
+Verify the install:
+
+```bash
+dxcom -v
+python3 -c "import dx_com; print(dx_com.__version__)"
+```
+
+??? tip "How to set up a virtual environment first (recommended)"
+
+    Installing into a virtual environment keeps `dx-com` and its dependencies (PyTorch, ONNX Runtime, OpenCV and others) isolated from your system Python. This avoids version conflicts and makes it easy to remove everything later.
+
+    **With the standard `venv` module**
+
+    ```bash
+    python3 -m venv ~/dx-com-venv
+    source ~/dx-com-venv/bin/activate
+    pip install dx-com
+    ```
+
+    **With a specific Python version** (e.g. 3.12)
+
+    ```bash
+    python3.12 -m venv ~/dx-com-venv
+    source ~/dx-com-venv/bin/activate
+    pip install dx-com
+    ```
+
+    **With [uv](https://docs.astral.sh/uv/)** (faster downloads, automatic Python management)
+
+    ```bash
+    # Install uv (once)
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    # Create the environment and install
+    uv venv ~/dx-com-venv --python 3.12
+    source ~/dx-com-venv/bin/activate
+    uv pip install dx-com
+    ```
+
+    To deactivate the environment run `deactivate`. To remove it entirely, delete the folder: `rm -rf ~/dx-com-venv`.
+
+    !!! note "Activate before every session"
+        The `dxcom` command and `import dx_com` only work while the environment is active. Add `source ~/dx-com-venv/bin/activate` to your shell profile, or activate it at the start of each terminal session.
+
+For more install options (one-line script, repository clone, Docker), see [Host: DX-COM](#host-dx-com) below.
+
+---
+
+This page also covers the full DEEPX SDK 2.5.0: the runtime stack on the machine with the NPU and both parts together through Docker.
 
 ## Before you start
 

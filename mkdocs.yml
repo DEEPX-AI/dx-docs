@@ -13,7 +13,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.indexes
     - navigation.top
     - navigation.path
     - navigation.footer
