@@ -322,7 +322,7 @@ DX-AllSuite supports a vast array of industry-standard AI architectures, optimiz
 The DEEPX Technical Support Team is here to help you build smooth AI solutions.  
 
 - **DEEPX Developer Portal**: [https://developer.deepx.ai](https://developer.deepx.ai) (Latest documentation and SDK release notes)  
-- **Technical Support**: [tech-support@deepx.ai](mailto:tech-support@deepx.ai) (Consultation on custom model deployment and hardware integration)    
+- For technical questions, please ask in the DEEPX Developer Community: https://community.deepx.ai/c/support/5
 
 Copyright © DEEPX. All rights reserved.  
 
