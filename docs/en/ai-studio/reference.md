@@ -114,5 +114,4 @@ We provide these third party models and datasets as is, for convenience, and are
 
 ## Next steps
 
-* [DX AI Studio release notes](../release-notes/ai-studio.md)
 * [Glossary](../reference/glossary.md)

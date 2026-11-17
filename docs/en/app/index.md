@@ -70,7 +70,6 @@ The C++ examples are `bin/<variant>_sync` and `bin/<variant>_async`.
 * [DX tool](dx-tool.md): add, validate, run and benchmark examples.
 * [Customize a YOLO model](customize-yolo.md): bring your own YOLO model into DX-APP.
 * [Third party licenses](licenses.md): licenses of the sample models and data.
-* [DX-APP release notes](../release-notes/app.md): what changed in each version.
 
 ## Next steps
 

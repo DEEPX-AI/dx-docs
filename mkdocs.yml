@@ -1,6 +1,6 @@
-site_name: DEEPX Tech Docs
+site_name: Documentation
 site_description: Compile, run and ship AI models on DEEPX NPUs.
-site_url: https://developer.deepx.ai/tech-docs/
+site_url: https://developer.deepx.ai/
 repo_url: https://github.com/DEEPX-AI/docs
 edit_uri: edit/main/docs/
 
@@ -26,19 +26,47 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: custom
+      accent: cyan
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: custom
+      accent: cyan
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  favicon: assets/logo.avif
+  logo: assets/logo.avif
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: 한국어
+      link: /ko/
+      lang: ko
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DEEPX-AI
+    - icon: fontawesome/solid/globe
+      link: https://deepx.ai
+
+copyright: "&copy; 2026 DEEPX Co., Ltd."
 
 plugins:
   - search
+  - minify:
+      minify_html: true
   - llmstxt:
       full_output: llms-full.txt
 
@@ -58,153 +86,157 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
 
 nav:
-  - Home: index.md
+  - Home: en/index.md
   - Install:
-      - "Install": get-started/install.md
-      - "Quickstart": get-started/quickstart.md
-      - "Compatibility": get-started/compatibility.md
-      - "Troubleshooting": get-started/troubleshooting.md
+      - "Install": en/get-started/install.md
+      - "Quickstart": en/get-started/quickstart.md
+      - "Compatibility": en/get-started/compatibility.md
+      - "Troubleshooting": en/get-started/troubleshooting.md
   - Compiler:
-      - "DX-COM compiler": compiler/index.md
-      - "Compile a model": compiler/compile-a-model.md
-      - "Config file reference": compiler/config-reference.md
-      - "Prepare an ONNX model": compiler/onnx-models.md
-      - "Python API": compiler/python-api.md
-      - "Use cases": compiler/use-cases.md
+      - "DX-COM compiler": en/compiler/index.md
+      - "Compile a model": en/compiler/compile-a-model.md
+      - "Config file reference": en/compiler/config-reference.md
+      - "Prepare an ONNX model": en/compiler/onnx-models.md
+      - "Python API": en/compiler/python-api.md
+      - "Use cases": en/compiler/use-cases.md
       - "Accuracy":
-          - "Quantization": compiler/quantization.md
-          - "Q-Master (QAT)": compiler/q-master.md
+          - "Quantization": en/compiler/quantization.md
+          - "Q-Master (QAT)": en/compiler/q-master.md
       - "Detection post processing":
-          - "PPU for YOLO models": compiler/ppu.md
-          - "Pre Optimize API": compiler/pre-optimize.md
+          - "PPU for YOLO models": en/compiler/ppu.md
+          - "Pre Optimize API": en/compiler/pre-optimize.md
       - "Inspect and fix":
-          - "Summary report": compiler/summary-report.md
-          - "Troubleshooting": compiler/troubleshooting.md
+          - "Summary report": en/compiler/summary-report.md
+          - "Troubleshooting": en/compiler/troubleshooting.md
   - Runtime:
-      - "DX-RT": runtime/index.md
-      - "Run inference": runtime/run-inference.md
-      - "Configuration": runtime/configuration.md
-      - "Command line tools": runtime/cli.md
-      - "Tutorials": runtime/tutorials.md
-      - "DX-Fit": runtime/dx-fit.md
+      - "DX-RT": en/runtime/index.md
+      - "Run inference": en/runtime/run-inference.md
+      - "Configuration": en/runtime/configuration.md
+      - "Command line tools": en/runtime/cli.md
+      - "Tutorials": en/runtime/tutorials.md
+      - "DX-Fit": en/runtime/dx-fit.md
       - "Reference":
-          - "Python API": runtime/python-api.md
-          - "C++ API": runtime/cpp-api.md
-          - "C# through the C API": runtime/csharp.md
+          - "Python API": en/runtime/python-api.md
+          - "C++ API": en/runtime/cpp-api.md
+          - "C# through the C API": en/runtime/csharp.md
       - "System":
-          - "NPU driver and firmware": runtime/driver-firmware.md
-          - "Build from source": runtime/build-from-source.md
-          - "Troubleshooting": runtime/troubleshooting.md
-  - App:
-      - "DX-APP overview": app/index.md
-      - "Build DX-APP": app/build.md
-      - "Run the examples": app/run-examples.md
-      - "Model catalog": app/models.md
-      - "Multi model graph": app/multi-model-graph.md
-      - "Post processing": app/post-processing.md
-      - "Develop":
-          - "Architecture": app/architecture.md
-          - "DX tool": app/dx-tool.md
-          - "Customize a YOLO model": app/customize-yolo.md
-      - "Reference":
-          - "Third party licenses": app/licenses.md
-  - Stream:
-      - "DX-Stream": stream/index.md
-      - "Install":
-          - "Build and install": stream/build.md
-          - "Build on Orange Pi 5 Plus": stream/build-orange-pi.md
-          - "Build on Windows": stream/build-windows.md
-      - "Use":
-          - "Pipelines": stream/pipelines.md
-          - "Write an application": stream/write-an-application.md
-          - "Python bindings (pydxs)": stream/python-bindings.md
-          - "User metadata": stream/user-metadata.md
-      - "Elements":
-          - "Elements": stream/elements/index.md
-          - "Multi stream domain": stream/elements/multi-stream-domain.md
-          - "DxPreprocess": stream/elements/dxpreprocess.md
-          - "DxInfer": stream/elements/dxinfer.md
-          - "DxPostprocess": stream/elements/dxpostprocess.md
-          - "DxTracker": stream/elements/dxtracker.md
-          - "DxOsd": stream/elements/dxosd.md
-          - "DxGather": stream/elements/dxgather.md
-          - "DxInputSelector": stream/elements/dxinputselector.md
-          - "DxOutputSelector": stream/elements/dxoutputselector.md
-          - "DxRate": stream/elements/dxrate.md
-          - "DxMsgConv": stream/elements/dxmsgconv.md
-          - "DxMsgBroker": stream/elements/dxmsgbroker.md
-          - "DxScale": stream/elements/dxscale.md
-          - "DxConvert": stream/elements/dxconvert.md
-          - "DxVnpuDec": stream/elements/dxvnpudec.md
-          - "DxVnpuEnc": stream/elements/dxvnpuenc.md
-      - "Operate":
-          - "Performance with GstShark": stream/performance.md
-          - "Debugging and troubleshooting": stream/debugging.md
-          - "Third party model licenses": stream/licenses.md
-  - Model Zoo:
-      - "DX-ModelZoo": model-zoo/index.md
-      - "Install DX-ModelZoo": model-zoo/install.md
-      - "Evaluate models": model-zoo/evaluate.md
-      - "Datasets": model-zoo/datasets.md
-      - "Custom models and datasets": model-zoo/custom-models.md
-      - "Architecture": model-zoo/architecture.md
-      - "Reference":
-          - "dxmz CLI": model-zoo/cli.md
-          - "YAML configuration": model-zoo/yaml-config.md
-          - "Python API": model-zoo/python-api.md
-          - "Preprocessing and postprocessing": model-zoo/processing-ops.md
-  - AI Studio:
-      - "DX AI Studio": ai-studio/index.md
-      - "Install and launch": ai-studio/install-and-launch.md
-      - "The hub": ai-studio/hub.md
-      - "Models and compiler": ai-studio/workflow.md
-      - "DX App": ai-studio/app.md
-      - "DX Stream": ai-studio/stream.md
-      - "Monitor and benchmark": ai-studio/monitor-and-benchmark.md
-      - "DX EdgeGuide": ai-studio/edge-guide.md
-      - "DX Cloud on AWS": ai-studio/cloud-aws.md
-      - "Reference": ai-studio/reference.md
+          - "NPU driver and firmware": en/runtime/driver-firmware.md
+          - "Build from source": en/runtime/build-from-source.md
+          - "Troubleshooting": en/runtime/troubleshooting.md
   - Tools:
-      - "Tools": tools/index.md
-      - "DX-Benchmark": tools/benchmark.md
+      - "Tools": en/tools/index.md
+      - "DX-Benchmark": en/tools/benchmark.md
       - "DX-Edge (AWS)":
-          - "DX-Edge": tools/dx-edge.md
-          - "Greengrass devices": tools/dx-edge-devices.md
+          - "DX-Edge": en/tools/dx-edge.md
+          - "Greengrass devices": en/tools/dx-edge-devices.md
       - "Kubernetes":
-          - "Kubernetes": tools/kubernetes.md
+          - "Kubernetes": en/tools/kubernetes.md
       - "Agent driven development (Beta)":
-          - "Agent driven development": tools/agent-driven-development.md
-          - "Agent showcases": tools/agent-showcases.md
+          - "Agent driven development": en/tools/agent-driven-development.md
+          - "Agent showcases": en/tools/agent-showcases.md
+      - App:
+          - "DX-APP overview": en/app/index.md
+          - "Build DX-APP": en/app/build.md
+          - "Run the examples": en/app/run-examples.md
+          - "Model catalog": en/app/models.md
+          - "Multi model graph": en/app/multi-model-graph.md
+          - "Post processing": en/app/post-processing.md
+          - "Develop":
+              - "Architecture": en/app/architecture.md
+              - "DX tool": en/app/dx-tool.md
+              - "Customize a YOLO model": en/app/customize-yolo.md
+          - "Reference":
+              - "Third party licenses": en/app/licenses.md
+      - Stream:
+          - "DX-Stream": en/stream/index.md
+          - "Install":
+              - "Build and install": en/stream/build.md
+              - "Build on Orange Pi 5 Plus": en/stream/build-orange-pi.md
+              - "Build on Windows": en/stream/build-windows.md
+          - "Use":
+              - "Pipelines": en/stream/pipelines.md
+              - "Write an application": en/stream/write-an-application.md
+              - "Python bindings (pydxs)": en/stream/python-bindings.md
+              - "User metadata": en/stream/user-metadata.md
+          - "Elements":
+              - "Elements": en/stream/elements/index.md
+              - "Multi stream domain": en/stream/elements/multi-stream-domain.md
+              - "DxPreprocess": en/stream/elements/dxpreprocess.md
+              - "DxInfer": en/stream/elements/dxinfer.md
+              - "DxPostprocess": en/stream/elements/dxpostprocess.md
+              - "DxTracker": en/stream/elements/dxtracker.md
+              - "DxOsd": en/stream/elements/dxosd.md
+              - "DxGather": en/stream/elements/dxgather.md
+              - "DxInputSelector": en/stream/elements/dxinputselector.md
+              - "DxOutputSelector": en/stream/elements/dxoutputselector.md
+              - "DxRate": en/stream/elements/dxrate.md
+              - "DxMsgConv": en/stream/elements/dxmsgconv.md
+              - "DxMsgBroker": en/stream/elements/dxmsgbroker.md
+              - "DxScale": en/stream/elements/dxscale.md
+              - "DxConvert": en/stream/elements/dxconvert.md
+              - "DxVnpuDec": en/stream/elements/dxvnpudec.md
+              - "DxVnpuEnc": en/stream/elements/dxvnpuenc.md
+          - "Operate":
+              - "Performance with GstShark": en/stream/performance.md
+              - "Debugging and troubleshooting": en/stream/debugging.md
+              - "Third party model licenses": en/stream/licenses.md
+      - Model Zoo:
+          - "DX-ModelZoo": en/model-zoo/index.md
+          - "Install DX-ModelZoo": en/model-zoo/install.md
+          - "Evaluate models": en/model-zoo/evaluate.md
+          - "Datasets": en/model-zoo/datasets.md
+          - "Custom models and datasets": en/model-zoo/custom-models.md
+          - "Architecture": en/model-zoo/architecture.md
+          - "Reference":
+              - "dxmz CLI": en/model-zoo/cli.md
+              - "YAML configuration": en/model-zoo/yaml-config.md
+              - "Python API": en/model-zoo/python-api.md
+              - "Preprocessing and postprocessing": en/model-zoo/processing-ops.md
+      - AI Studio:
+          - "DX AI Studio": en/ai-studio/index.md
+          - "Install and launch": en/ai-studio/install-and-launch.md
+          - "The hub": en/ai-studio/hub.md
+          - "Models and compiler": en/ai-studio/workflow.md
+          - "DX App": en/ai-studio/app.md
+          - "DX Stream": en/ai-studio/stream.md
+          - "Monitor and benchmark": en/ai-studio/monitor-and-benchmark.md
+          - "DX EdgeGuide": en/ai-studio/edge-guide.md
+          - "DX Cloud on AWS": en/ai-studio/cloud-aws.md
+          - "Reference": en/ai-studio/reference.md
   - Tutorials:
-      - "Tutorials": tutorials/index.md
+      - "Tutorials": en/tutorials/index.md
       - "Learn the SDK":
-          - "Set up the tutorials": tutorials/setup.md
-          - "Run the DX-APP examples": tutorials/dx-app.md
-          - "Deploy a custom model": tutorials/custom-model.md
-          - "Build a DX-Stream pipeline": tutorials/dx-stream.md
-          - "Compile models with DX-COM": tutorials/compiler.md
-          - "Run models with DX-RT": tutorials/runtime.md
+          - "Set up the tutorials": en/tutorials/setup.md
+          - "Run the DX-APP examples": en/tutorials/dx-app.md
+          - "Deploy a custom model": en/tutorials/custom-model.md
+          - "Build a DX-Stream pipeline": en/tutorials/dx-stream.md
+          - "Compile models with DX-COM": en/tutorials/compiler.md
+          - "Run models with DX-RT": en/tutorials/runtime.md
       - "Demos":
-          - "PP-OCRv6 camera OCR": tutorials/ocr-camera.md
-          - "PP-OCR web demo": tutorials/ocr-web-demo.md
-          - "YOLO multi channel": tutorials/yolo-multi-channel.md
-          - "YOLO26 four tasks": tutorials/yolo26-four-tasks.md
-          - "YOLO26 C++ applications": tutorials/yolo26-apps.md
-          - "YOLO26 four channel on RK3588": tutorials/yolo26-rk3588.md
-          - "CLIP in C++": tutorials/clip-cpp.md
-          - "CLIP in Python": tutorials/clip-python.md
-          - "CLIP multi channel demo": tutorials/clip-multi-channel.md
-          - "Hand landmarks": tutorials/hand-landmarks.md
-          - "PIDNet segmentation": tutorials/pidnet.md
-          - "RapidDoc document parsing": tutorials/rapiddoc.md
+          - "PP-OCRv6 camera OCR": en/tutorials/ocr-camera.md
+          - "PP-OCR web demo": en/tutorials/ocr-web-demo.md
+          - "YOLO multi channel": en/tutorials/yolo-multi-channel.md
+          - "YOLO26 four tasks": en/tutorials/yolo26-four-tasks.md
+          - "YOLO26 C++ applications": en/tutorials/yolo26-apps.md
+          - "YOLO26 four channel on RK3588": en/tutorials/yolo26-rk3588.md
+          - "CLIP in C++": en/tutorials/clip-cpp.md
+          - "CLIP in Python": en/tutorials/clip-python.md
+          - "CLIP multi channel demo": en/tutorials/clip-multi-channel.md
+          - "Hand landmarks": en/tutorials/hand-landmarks.md
+          - "PIDNet segmentation": en/tutorials/pidnet.md
+          - "RapidDoc document parsing": en/tutorials/rapiddoc.md
       - "Reference":
-          - "Platform notes": tutorials/platform-notes.md
+          - "Platform notes": en/tutorials/platform-notes.md
   - Reference:
-      - "Reference": reference/index.md
-      - "Glossary": reference/glossary.md
+      - "Reference": en/reference/index.md
+      - "Glossary": en/reference/glossary.md
   - Contribute:
-      - "Contribute": contributing/index.md
-      - "Writing guide": contributing/writing-guide.md
-      - "README rule": contributing/readme-rule.md
+      - "Contribute": en/contributing/index.md
+      - "Writing guide": en/contributing/writing-guide.md
+      - "README rule": en/contributing/readme-rule.md

@@ -55,7 +55,7 @@ flowchart TB
 ```
 
 | Layer | C++ | Python |
-|---|---|---|
+| --- | --- | --- |
 | App (entry point) | `<variant>_sync.cpp` | `<variant>_sync.py` |
 | Runner (sync or async pipeline) | `sync_detection_runner.hpp` | `sync_runner.py` |
 | Factory (assembles the parts for one model) | `<variant>_factory.hpp` | `<variant>_factory.py` |
@@ -132,7 +132,7 @@ A factory implements the task interface (for example `IDetectionFactory`) and cr
 ### Runners
 
 | | C++ (`cpp_example/common/runner/`) | Python (`python_example/common/runner/`) |
-|---|---|---|
+| --- | --- | --- |
 | Runner set | One sync and one async runner per task type, for example `sync_detection_runner.hpp` and `async_detection_runner.hpp` | Generic `SyncRunner` and `AsyncRunner` for every task |
 | Dispatch | A task specific runner per category | The factory supplies the task specific parts |
 
@@ -141,7 +141,7 @@ A factory implements the task interface (for example `IDetectionFactory`) and cr
 Both `common/` folders have the same core modules.
 
 | Module | Role |
-|---|---|
+| --- | --- |
 | `base/` | Interfaces: the task factories (`IDetectionFactory`, `IClassificationFactory`, ...), `IPreprocessor` and `IPostprocessor`, `IVisualizer`, `IInputSource` |
 | `config/` | Loads `config.json` (`model_config.hpp`; Python `model_config.py`, `config_schema.py`) |
 | `processors/` | Shared pre and post processors for all model families |
@@ -193,7 +193,7 @@ factory defaults  <  <task>/<family>/<variant>/config.json  <  --config file
 ```
 
 | Field | Meaning |
-|---|---|
+| --- | --- |
 | `variant` | The model identity: the `.dxnn` stem and the example folder name |
 | `family`, `task` | The family and task folders |
 | `model_name` | The row name: the variant, or the variant's old name, which still resolves to it |

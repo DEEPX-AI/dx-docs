@@ -57,7 +57,7 @@ If you only want to try the NPU, skip steps 1 and 2 and use a precompiled model 
 1. [Compatibility](compatibility.md): version matrix, supported OS, Python and hardware, and how to check what you have.
 1. [Troubleshooting](troubleshooting.md): fixes for common install and environment errors.
 
-For words and old product names you meet in our material, see the [Glossary](../reference/glossary.md). For what changed in each release, see the [Release notes](../release-notes/index.md).
+For words and old product names you meet in our material, see the [Glossary](../reference/glossary.md).
 
 ## Next steps
 

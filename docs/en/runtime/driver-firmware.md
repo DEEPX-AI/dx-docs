@@ -306,5 +306,4 @@ The `dx-yolo26-sample` package adds YOLO26 demo apps and a launcher, `/etc/dx-yo
 
 * [Troubleshooting](troubleshooting.md)
 * [Command line tools](cli.md#dxcli)
-* [Runtime release notes](../release-notes/runtime.md)
 * [Compatibility](../get-started/compatibility.md)

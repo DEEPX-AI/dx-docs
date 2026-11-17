@@ -71,7 +71,6 @@ Install DX-COM: see [Install](../get-started/install.md). This table is the refe
 * [Use cases](use-cases.md): complete examples for common tasks.
 * [Summary report](summary-report.md): the HTML report that replaces DX-TRON.
 * [Troubleshooting](troubleshooting.md): error types and fixes.
-* [DX-COM release notes](../release-notes/compiler.md): what changed in each version.
 
 ## Next steps
 

@@ -51,7 +51,6 @@ The IDs connect the stages: `dxinfer` reads the tensor whose `preprocess-id` mat
 * [Performance with GstShark](performance.md): measure CPU use, latency and frame rate per element.
 * [Debugging and troubleshooting](debugging.md): debug logs, common errors and fixes.
 * [Third party model licenses](licenses.md): what you may do with the sample models.
-* [DX-Stream release notes](../release-notes/stream.md).
 
 ## Next steps
 

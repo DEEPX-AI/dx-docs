@@ -308,7 +308,7 @@ Each engine keeps timing statistics, in microseconds:
 Each metric also has list, mean, standard deviation and count variants, such as `get_core_latency_mean()` or `GetCoreLatencyMean()`. Statistics stop updating after `INT_MAX` samples.
 
 !!! note "Latency changed in DX-RT 3.5.0"
-    `GetLatency` now returns the E2E response time. If your code compares against values from older versions, use `GetCoreLatency` instead. See the [release notes](../release-notes/runtime.md#migrating-to-dx-rt-350).
+    `GetLatency` now returns the E2E response time. If your code compares against values from older versions, use `GetCoreLatency` instead. See the [compatibility page](../get-started/compatibility.md) for version requirements.
 
 For a quick throughput number, call the built in benchmark. It returns frames per second.
 

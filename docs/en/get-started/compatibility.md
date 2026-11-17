@@ -164,4 +164,3 @@ DXRT v3.5.0
 
 * [Install or upgrade](install.md)
 * [Fix version errors](troubleshooting.md)
-* [Read what changed](../release-notes/index.md)

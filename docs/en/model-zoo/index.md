@@ -117,7 +117,6 @@ The 497 models in 1.0.0 are 420 computer vision models, 14 PPU models and 63 pre
 * [CLI reference](cli.md): every `dxmz` command and option.
 * [Python API](python-api.md): `ModelBuilder`, sessions, `DataLoader`, evaluators and registries.
 * [Preprocessing and postprocessing](processing-ops.md): every built in operation.
-* [DX-ModelZoo release notes](../release-notes/model-zoo.md)
 
 ## Next steps
 

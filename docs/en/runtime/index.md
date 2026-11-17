@@ -18,7 +18,6 @@ DX-RT is our runtime for DEEPX NPUs. It loads a compiled `.dxnn` model, sends in
 * [NPU driver and firmware](driver-firmware.md): versions, updates, module parameters and Yocto.
 * [Build from source](build-from-source.md) and [C# through the C API](csharp.md).
 * [Troubleshooting](troubleshooting.md): common errors and fixes.
-* [Release notes](../release-notes/runtime.md): DX-RT, NPU driver and firmware change logs.
 
 To install DX-RT, the NPU driver and the firmware, see [Install](../get-started/install.md).
 

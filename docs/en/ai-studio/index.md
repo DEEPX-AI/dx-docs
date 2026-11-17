@@ -54,7 +54,6 @@ flowchart LR
 * [DX EdgeGuide](edge-guide.md): hardware recommendations.
 * [DX Cloud on AWS](cloud-aws.md): cloud compile and Greengrass devices.
 * [Reference](reference.md): SDK Library, environment variables, ports and third party licenses.
-* [Release notes](../release-notes/ai-studio.md): what changed in each version.
 
 ## Next steps
 
