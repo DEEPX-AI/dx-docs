@@ -18,7 +18,7 @@ Current version: DX-COM 2.5.0 (DEEPX SDK 2.5.0).
     - docs/snippets/install-compiler.md
   This snippet is also included in docs/en/get-started/install.md.
 ----------------------------------------------------------------- -->
---8<-- "snippets/install-compiler.md"
+--8<-- "en/snippets/install-compiler.md"
 
 For more install options (one-line script, repository clone, Docker) see the [Install page](../get-started/install.md#host-dx-com).
 

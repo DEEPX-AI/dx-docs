@@ -14,7 +14,7 @@ DX-RT is our runtime for DEEPX NPUs. It loads a compiled `.dxnn` model, sends in
     - docs/snippets/install-runtime.md
   This snippet is also included in docs/en/get-started/install.md.
 ----------------------------------------------------------------- -->
---8<-- "snippets/install-runtime.md"
+--8<-- "en/snippets/install-runtime.md"
 
 For Docker and building from source, see the [Install page](../get-started/install.md).
 

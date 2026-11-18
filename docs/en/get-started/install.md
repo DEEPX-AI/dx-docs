@@ -16,13 +16,13 @@ description: Install the NPU driver, DX-RT and firmware on the device, DX-COM on
     - docs/en/compiler/index.md
     - docs/en/runtime/index.md
 ----------------------------------------------------------------- -->
---8<-- "snippets/install-compiler.md"
+--8<-- "en/snippets/install-compiler.md"
 
 For more install options (one-line script, repository clone, Docker), see [Host: DX-COM](#host-dx-com) below.
 
 ---
 
---8<-- "snippets/install-runtime.md"
+--8<-- "en/snippets/install-runtime.md"
 
 For full details — firmware flashing, Python package, Windows, Docker and building from source — see the [detailed sections below](#device-driver-runtime-and-firmware).
 
