@@ -102,9 +102,11 @@ nav:
       - "Troubleshooting": en/get-started/troubleshooting.md
   - Compiler:
       - "DX-COM compiler": en/compiler/index.md
+      - "System requirements": en/compiler/system-requirements.md
       - "Compile a model": en/compiler/compile-a-model.md
       - "Config file reference": en/compiler/config-reference.md
       - "Prepare an ONNX model": en/compiler/onnx-models.md
+      - "Supported ONNX operators": en/compiler/onnx-operators.md
       - "Python API": en/compiler/python-api.md
       - "Use cases": en/compiler/use-cases.md
       - "Accuracy":
@@ -116,8 +118,12 @@ nav:
       - "Inspect and fix":
           - "Summary report": en/compiler/summary-report.md
           - "Troubleshooting": en/compiler/troubleshooting.md
+      - "Reference":
+          - "File structure": en/compiler/file-structure.md
+          - "Agent-driven development": en/compiler/agent-driven-development.md
   - Runtime:
       - "DX-RT": en/runtime/index.md
+      - "System requirements": en/runtime/system-requirements.md
       - "Run inference": en/runtime/run-inference.md
       - "Configuration": en/runtime/configuration.md
       - "Command line tools": en/runtime/cli.md

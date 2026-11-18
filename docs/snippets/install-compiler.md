@@ -1,12 +1,93 @@
+<!-- Single source of truth for compiler install instructions.
+     This file is included via pymdownx.snippets in:
+       - en/get-started/install.md
+       - en/compiler/index.md
+     Edit ONLY here — never edit the included content in those pages. -->
+
 ## Install the compiler
 
-```bash
-pip install dx-com # (1)!
-```
+### Pre-installation requirements
 
-1. Installs DX-COM and all its dependencies (PyTorch, ONNX Runtime, OpenCV and others). The first install downloads around 8 GB.
+Install the system libraries that `dx-com` depends on before installing the Python package.
 
-Works on x86_64 Linux and Windows. With [uv](https://docs.astral.sh/uv/): `uv pip install dx-com`.
+=== "Debian / Ubuntu"
+
+    ```bash
+    sudo apt-get install -y --no-install-recommends libgl1 libglib2.0-0 make # (1)!
+    ```
+
+    1. `libgl1` and `libglib2.0-0` are required by OpenCV which is bundled with `dx-com`. `make` is used by some build steps.
+
+=== "Fedora"
+
+    ```bash
+    sudo dnf install -y mesa-libGL glib2 make
+    ```
+
+=== "RHEL / CentOS 9–10"
+
+    ```bash
+    sudo dnf install -y dnf-plugins-core
+    sudo dnf config-manager --set-enabled crb # (1)!
+    sudo dnf install -y mesa-libGL glib2 make
+    ```
+
+    1. `mesa-libGL` lives in the CodeReady Builder (CRB) repository on RHEL/CentOS — enable it first.
+
+### Install
+
+=== "PyPI (recommended)"
+
+    ```bash
+    pip install dx-com # (1)!
+    ```
+
+    1. Installs DX-COM and all its dependencies (PyTorch, ONNX Runtime, OpenCV and others). The first install downloads around 8 GB.
+
+=== "One-line script"
+
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/DEEPX-AI/dx-compiler/main/oneline-install.sh | sh # (1)!
+    ```
+
+    1. Creates a dedicated virtualenv at `~/deepx/venv-dx-compiler`, installs `dx-com` and links the `dxcom` launcher to `~/.local/bin`. No repository clone required.
+
+    Available environment variables to customise the install:
+
+    | Variable | Default | Description |
+    |---|---|---|
+    | `DX_VERSION` | latest on PyPI | Pin a specific `dx-com` release, e.g. `DX_VERSION=2.5.0` |
+    | `DX_INSTALL_DIR` | `~/deepx` | Root directory for the virtualenv |
+    | `DX_BIN_DIR` | `~/.local/bin` | Where the `dxcom` launcher is linked |
+    | `DX_NO_UV` | — | Set to `1` to force pip instead of uv |
+    | `UV_PIN` | pinned by default | Bootstrap a specific uv release |
+
+    **System-wide install** (shared machine):
+
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/DEEPX-AI/dx-compiler/main/oneline-install.sh \
+      | sudo DX_INSTALL_DIR=/opt/deepx DX_BIN_DIR=/usr/local/bin sh
+    ```
+
+=== "uv"
+
+    ```bash
+    uv pip install dx-com # (1)!
+    ```
+
+    1. Uses [uv](https://docs.astral.sh/uv/)'s faster resolver — significantly quicker than plain pip for large dependency sets like PyTorch and ONNX Runtime.
+
+=== "Local wheel"
+
+    Download the wheel matching your Python version from the DEEPX release and install it directly:
+
+    ```bash
+    pip install dx_com-<VERSION>-cp312-cp312-manylinux_2_31_x86_64.whl # (1)!
+    ```
+
+    1. Replace `cp312` with your Python tag (e.g. `cp310` for Python 3.10). Wheels are tagged `manylinux_2_31_x86_64` and require glibc ≥ 2.31 (Ubuntu 20.04+, RHEL/CentOS 9+, Fedora 42+).
+
+Works on x86_64 Linux and Windows.
 
 Verify:
 
@@ -65,3 +146,28 @@ python3 -c "import dx_com; print(dx_com.__version__)" # (2)!
 
     !!! note "Activate before every session"
         `dxcom` and `import dx_com` only work while the environment is active. Activate it at the start of each terminal session with `source ~/dx-com-venv/bin/activate`.
+
+??? tip "Uninstall"
+
+    **If installed via the one-line script:**
+
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/DEEPX-AI/dx-compiler/main/oneline-uninstall.sh | sh # (1)!
+    ```
+
+    1. Removes the virtualenv and the `dxcom` launcher. Pass the same `DX_INSTALL_DIR` / `DX_BIN_DIR` you used at install time if you changed the defaults.
+
+    For the system-wide install:
+
+    ```bash
+    curl -fsSL https://raw.githubusercontent.com/DEEPX-AI/dx-compiler/main/oneline-uninstall.sh \
+      | sudo DX_INSTALL_DIR=/opt/deepx DX_BIN_DIR=/usr/local/bin sh
+    ```
+
+    **If installed via pip into a virtualenv:**
+
+    ```bash
+    pip uninstall dx-com
+    # or remove the entire environment:
+    rm -rf ~/dx-com-venv
+    ```
