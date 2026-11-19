@@ -1,0 +1,250 @@
+site_name: Documentation
+site_description: Compile, run and ship AI models on DEEPX NPUs.
+site_url: https://developer.deepx.ai/
+repo_url: https://github.com/DEEPX-AI/dx-docs
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.path
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.progress
+    - toc.follow
+    - search.highlight
+    - search.suggest
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  favicon: assets/logo.avif
+  logo: assets/logo.avif
+
+extra_css:
+  - assets/extra.css
+
+extra:
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
+    - name: 한국어
+      link: /ko/
+      lang: ko
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DEEPX-AI
+    - icon: fontawesome/solid/globe
+      link: https://deepx.ai
+
+copyright: "&copy; 2026 DEEPX Co., Ltd."
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - llmstxt:
+      full_output: llms-full.txt
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path:
+        - docs
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+
+nav:
+  - Home: en/index.md
+  - Install:
+      - "Install": en/get-started/install.md
+      - "Quickstart": en/get-started/quickstart.md
+      - "Compatibility": en/get-started/compatibility.md
+      - "Troubleshooting": en/get-started/troubleshooting.md
+  - Compiler:
+      - "DX-COM compiler": en/compiler/index.md
+      - "System requirements": en/compiler/system-requirements.md
+      - "Compile a model": en/compiler/compile-a-model.md
+      - "Config file reference": en/compiler/config-reference.md
+      - "Prepare an ONNX model": en/compiler/onnx-models.md
+      - "Supported ONNX operators": en/compiler/onnx-operators.md
+      - "Python API": en/compiler/python-api.md
+      - "Use cases": en/compiler/use-cases.md
+      - "Accuracy":
+          - "Quantization": en/compiler/quantization.md
+          - "Q-Master (QAT)": en/compiler/q-master.md
+      - "Detection post processing":
+          - "PPU for YOLO models": en/compiler/ppu.md
+          - "Pre Optimize API": en/compiler/pre-optimize.md
+      - "Inspect and fix":
+          - "Summary report": en/compiler/summary-report.md
+          - "Troubleshooting": en/compiler/troubleshooting.md
+      - "Reference":
+          - "File structure": en/compiler/file-structure.md
+          - "Agent-driven development": en/compiler/agent-driven-development.md
+  - Runtime:
+      - "DX-RT": en/runtime/index.md
+      - "System requirements": en/runtime/system-requirements.md
+      - "Run inference": en/runtime/run-inference.md
+      - "Configuration": en/runtime/configuration.md
+      - "Command line tools": en/runtime/cli.md
+      - "Tutorials": en/runtime/tutorials.md
+      - "DX-Fit": en/runtime/dx-fit.md
+      - "Reference":
+          - "Python API": en/runtime/python-api.md
+          - "C++ API": en/runtime/cpp-api.md
+          - "C# through the C API": en/runtime/csharp.md
+      - "System":
+          - "NPU driver and firmware": en/runtime/driver-firmware.md
+          - "Build from source": en/runtime/build-from-source.md
+          - "Troubleshooting": en/runtime/troubleshooting.md
+  - Tools:
+      - "Tools": en/tools/index.md
+      - "DX-Benchmark": en/tools/benchmark.md
+      - "DX-Edge (AWS)":
+          - "DX-Edge": en/tools/dx-edge.md
+          - "Greengrass devices": en/tools/dx-edge-devices.md
+      - "Kubernetes":
+          - "Kubernetes": en/tools/kubernetes.md
+      - "Agent driven development (Beta)":
+          - "Agent driven development": en/tools/agent-driven-development.md
+          - "Agent showcases": en/tools/agent-showcases.md
+      - App:
+          - "DX-APP overview": en/tools/app/index.md
+          - "Build DX-APP": en/tools/app/build.md
+          - "Run the examples": en/tools/app/run-examples.md
+          - "Model catalog": en/tools/app/models.md
+          - "Multi model graph": en/tools/app/multi-model-graph.md
+          - "Post processing": en/tools/app/post-processing.md
+          - "Develop":
+              - "Architecture": en/tools/app/architecture.md
+              - "DX tool": en/tools/app/dx-tool.md
+              - "Customize a YOLO model": en/tools/app/customize-yolo.md
+          - "Reference":
+              - "Third party licenses": en/tools/app/licenses.md
+      - Stream:
+          - "DX-Stream": en/tools/stream/index.md
+          - "Install":
+              - "Build and install": en/tools/stream/build.md
+              - "Build on Orange Pi 5 Plus": en/tools/stream/build-orange-pi.md
+              - "Build on Windows": en/tools/stream/build-windows.md
+          - "Use":
+              - "Pipelines": en/tools/stream/pipelines.md
+              - "Write an application": en/tools/stream/write-an-application.md
+              - "Python bindings (pydxs)": en/tools/stream/python-bindings.md
+              - "User metadata": en/tools/stream/user-metadata.md
+          - "Elements":
+              - "Elements": en/tools/stream/elements/index.md
+              - "Multi stream domain": en/tools/stream/elements/multi-stream-domain.md
+              - "DxPreprocess": en/tools/stream/elements/dxpreprocess.md
+              - "DxInfer": en/tools/stream/elements/dxinfer.md
+              - "DxPostprocess": en/tools/stream/elements/dxpostprocess.md
+              - "DxTracker": en/tools/stream/elements/dxtracker.md
+              - "DxOsd": en/tools/stream/elements/dxosd.md
+              - "DxGather": en/tools/stream/elements/dxgather.md
+              - "DxInputSelector": en/tools/stream/elements/dxinputselector.md
+              - "DxOutputSelector": en/tools/stream/elements/dxoutputselector.md
+              - "DxRate": en/tools/stream/elements/dxrate.md
+              - "DxMsgConv": en/tools/stream/elements/dxmsgconv.md
+              - "DxMsgBroker": en/tools/stream/elements/dxmsgbroker.md
+              - "DxScale": en/tools/stream/elements/dxscale.md
+              - "DxConvert": en/tools/stream/elements/dxconvert.md
+              - "DxVnpuDec": en/tools/stream/elements/dxvnpudec.md
+              - "DxVnpuEnc": en/tools/stream/elements/dxvnpuenc.md
+          - "Operate":
+              - "Performance with GstShark": en/tools/stream/performance.md
+              - "Debugging and troubleshooting": en/tools/stream/debugging.md
+              - "Third party model licenses": en/tools/stream/licenses.md
+      - Model Zoo:
+          - "DX-ModelZoo": en/tools/model-zoo/index.md
+          - "Install DX-ModelZoo": en/tools/model-zoo/install.md
+          - "Evaluate models": en/tools/model-zoo/evaluate.md
+          - "Datasets": en/tools/model-zoo/datasets.md
+          - "Custom models and datasets": en/tools/model-zoo/custom-models.md
+          - "Architecture": en/tools/model-zoo/architecture.md
+          - "Reference":
+              - "dxmz CLI": en/tools/model-zoo/cli.md
+              - "YAML configuration": en/tools/model-zoo/yaml-config.md
+              - "Python API": en/tools/model-zoo/python-api.md
+              - "Preprocessing and postprocessing": en/tools/model-zoo/processing-ops.md
+      - AI Studio:
+          - "DX AI Studio": en/tools/ai-studio/index.md
+          - "Install and launch": en/tools/ai-studio/install-and-launch.md
+          - "The hub": en/tools/ai-studio/hub.md
+          - "Models and compiler": en/tools/ai-studio/workflow.md
+          - "DX App": en/tools/ai-studio/app.md
+          - "DX Stream": en/tools/ai-studio/stream.md
+          - "Monitor and benchmark": en/tools/ai-studio/monitor-and-benchmark.md
+          - "DX EdgeGuide": en/tools/ai-studio/edge-guide.md
+          - "DX Cloud on AWS": en/tools/ai-studio/cloud-aws.md
+          - "Reference": en/tools/ai-studio/reference.md
+  - Tutorials:
+      - "Tutorials": en/tutorials/index.md
+      - "Learn the SDK":
+          - "Set up the tutorials": en/tutorials/setup.md
+          - "Run the DX-APP examples": en/tutorials/dx-app.md
+          - "Deploy a custom model": en/tutorials/custom-model.md
+          - "Build a DX-Stream pipeline": en/tutorials/dx-stream.md
+          - "Compile models with DX-COM": en/tutorials/compiler.md
+          - "Run models with DX-RT": en/tutorials/runtime.md
+      - "Demos":
+          - "PP-OCRv6 camera OCR": en/tutorials/ocr-camera.md
+          - "PP-OCR web demo": en/tutorials/ocr-web-demo.md
+          - "YOLO multi channel": en/tutorials/yolo-multi-channel.md
+          - "YOLO26 four tasks": en/tutorials/yolo26-four-tasks.md
+          - "YOLO26 C++ applications": en/tutorials/yolo26-apps.md
+          - "YOLO26 four channel on RK3588": en/tutorials/yolo26-rk3588.md
+          - "CLIP in C++": en/tutorials/clip-cpp.md
+          - "CLIP in Python": en/tutorials/clip-python.md
+          - "CLIP multi channel demo": en/tutorials/clip-multi-channel.md
+          - "Hand landmarks": en/tutorials/hand-landmarks.md
+          - "PIDNet segmentation": en/tutorials/pidnet.md
+          - "RapidDoc document parsing": en/tutorials/rapiddoc.md
+      - "Reference":
+          - "Platform notes": en/tutorials/platform-notes.md
+  - Reference:
+      - "Reference": en/reference/index.md
+      - "Glossary": en/reference/glossary.md
+  - Contribute:
+      - "Contribute": en/contributing/index.md
+      - "Writing guide": en/contributing/writing-guide.md
+      - "README rule": en/contributing/readme-rule.md
