@@ -1,13 +1,15 @@
-# DEEPX Tech Docs
+# DEEPX SDK Docs
 
-Documentation for the DEEPX SDK, built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
+Documentation for the DEEPX SDK, built with [Zensical](https://zensical.org/) from `mkdocs.yml` (Material for MkDocs theme).
 
 ## Setup
 
-Install the dependencies:
+Python 3.10 or newer:
 
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+. .venv/bin/activate
+pip install zensical==0.1.1 -r requirements.txt
 ```
 
 ## Local development
@@ -15,84 +17,50 @@ pip install -r requirements.txt
 Serve the docs locally with live reload:
 
 ```bash
-mkdocs serve
+zensical serve
 ```
 
-Open [http://localhost:8000](http://localhost:8000) in your browser. Changes to any file are reflected immediately.
+Open [http://localhost:8000](http://localhost:8000). Changes under `docs/` and `snippets/` are reflected immediately.
 
 ## Build
 
-Build a static site into the `site/` directory:
-
 ```bash
-mkdocs build
+zensical build --strict
 ```
 
-The output in `site/` is a self-contained static site you can host anywhere.
+The build must finish with no warnings. The CI workflow that runs this command on `main` is on the `build-check-action` branch until it is merged. The output in `site/` is a self-contained static site you can host anywhere.
+
+## Add or change a page
+
+1. Edit or add Markdown under `docs/`, in the folder of the top tab it belongs to.
+2. Add new pages to `nav` in `mkdocs.yml`.
+3. Put content shared by several pages in `snippets/` and include it with `--8<-- "snippets/<file>.md"`.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute and the writing guide.
 
 ## Versioning
 
-Versioning is handled by [mike](https://github.com/jimporter/mike), which deploys versioned builds to the `gh-pages` branch. Each version is served from its own subdirectory (e.g. `/2.5/`, `/latest/`), and a version picker appears in the top bar.
-
-### Deploy a new version
-
-```bash
-mike deploy --push --update-aliases 2.5 latest
-```
-
-This builds the site and pushes it to `gh-pages` under `/2.5/`, then points the `latest` alias to it.
-
-### Set the default version
-
-The default version is what users land on when they visit the root URL:
-
-```bash
-mike set-default --push latest
-```
-
-### List deployed versions
-
-```bash
-mike list
-```
-
-### Delete a version
-
-```bash
-mike delete --push 2.4
-```
-
-### Preview all versions locally
-
-```bash
-mike serve
-```
-
-### Typical release workflow
-
-```bash
-# After merging changes for a new release:
-mike deploy --push --update-aliases <version> latest
-mike set-default --push latest
-```
+Not configured yet. Versioned docs are planned for adding the docs of earlier SDK releases. `mike` is listed in `requirements.txt`, but `mkdocs.yml` has no version provider yet, and it still needs to be checked whether `mike` works with Zensical.
 
 ## Project structure
 
 ```
 dx-docs/
-├── docs/               # Markdown source files
+├── docs/               # Markdown source files (one folder per top tab)
 │   ├── index.md        # Homepage
 │   ├── assets/         # Images and static files
-│   ├── get-started/    # Install, quickstart, compatibility, troubleshooting
+│   ├── get-started/    # Overview, install, quickstart, compatibility, troubleshooting
 │   ├── compiler/       # DX-COM compiler docs
 │   ├── runtime/        # DX-RT runtime docs
-│   ├── app/            # DX-APP docs
-│   ├── stream/         # DX-Stream docs
-│   ├── model-zoo/      # DX-ModelZoo docs
-│   ├── ai-studio/      # DX AI Studio docs
 │   ├── tools/          # Benchmark, Kubernetes, DX-Edge, agent dev
+│   │   ├── app/        # DX-APP docs
+│   │   ├── stream/     # DX-Stream docs
+│   │   ├── model-zoo/  # DX-ModelZoo docs
+│   │   └── ai-studio/  # DX AI Studio docs
 │   ├── tutorials/      # Step-by-step tutorials and demos
-│   └── reference/      # Glossary and reference pages
-├── mkdocs.yml          # MkDocs configuration
+│   └── reference/      # Release notes and glossary
+├── snippets/           # Shared Markdown included with --8<-- (not built as pages)
+├── mkdocs.yml          # Site configuration and nav
+├── CONTRIBUTING.md     # How to contribute, writing guide and README rule (not published)
 └── requirements.txt    # Python dependencies
 ```
